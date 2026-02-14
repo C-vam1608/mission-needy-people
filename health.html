@@ -1,0 +1,1138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Health - Mission Needy People</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HEAD section mein ye CDN link add karo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Architects+Daughter&family=Kalam:wght@300;400;700&family=Pacifico&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <!-- Swiper CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    
+    <style>
+        :root {
+            --sketch-brown: #8B4513;
+            --warm-orange: #FF7F50;
+            --gentle-yellow: #FFD700;
+            --soft-blue: #87CEEB;
+            --cream-paper: #FFF5E6;
+            --charcoal: #2C2C2C;
+            --heart-red: #DC143C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kalam', cursive;
+            background: var(--cream-paper);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Paper Texture Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 69, 19, 0.02) 2px,
+                    rgba(139, 69, 19, 0.02) 4px
+                ),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--cream-paper);
+            border-left: 2px dashed var(--sketch-brown);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--warm-orange);
+            border-radius: 10px;
+            border: 2px solid var(--cream-paper);
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 245, 230, 0.98);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            z-index: 1000;
+            border: 3px solid var(--sketch-brown);
+            clip-path: polygon(
+                1% 0%, 99% 2%, 100% 98%, 0% 100%
+            );
+            backdrop-filter: blur(10px);
+            max-width: 95%;
+        }
+        
+        .nav-link {
+            position: relative;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--warm-orange);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover {
+            color: var(--warm-orange);
+            transform: translateY(-2px);
+        }
+        
+        /* Sketch Button */
+        .sketch-btn {
+            position: relative;
+            background: var(--warm-orange);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            transition: all 0.3s ease;
+            box-shadow: 
+                4px 4px 0px rgba(0,0,0,0.2),
+                -1px -1px 0px rgba(255,255,255,0.5);
+        }
+        
+        .sketch-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 
+                6px 6px 0px rgba(0,0,0,0.3),
+                -2px -2px 0px rgba(255,255,255,0.5);
+        }
+        
+        /* Secondary Navbar */
+        .secondary-nav {
+            margin-top: 7rem;
+            padding: 1.5rem;
+            background: white;
+            border-radius: 25px;
+            border: 4px solid var(--sketch-brown);
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            box-shadow: 8px 8px 0px rgba(0,0,0,0.1);
+        }
+        
+        .secondary-nav a {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.2rem;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 0.5rem 1.5rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .secondary-nav a:hover,
+        .secondary-nav a.active {
+            background: var(--warm-orange);
+            color: white;
+            transform: translateY(-3px);
+        }
+        
+        /* Carousel */
+        .carousel-container {
+            position: relative;
+            border-radius: 30px;
+            overflow: hidden;
+            border: 5px solid var(--sketch-brown);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            clip-path: polygon(
+                1% 0%, 99% 1%, 100% 99%, 0% 100%
+            );
+            margin-top: 2rem;
+        }
+        
+        .swiper {
+            width: 100%;
+            height: 600px;
+        }
+        
+        .swiper-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        
+        .swiper-button-next,
+        .swiper-button-prev {
+            background: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: 3px solid var(--sketch-brown);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        .swiper-button-next::after,
+        .swiper-button-prev::after {
+            font-size: 20px;
+            color: var(--charcoal);
+            font-weight: bold;
+        }
+        
+        .swiper-pagination-bullet {
+            background: white;
+            border: 2px solid var(--sketch-brown);
+            opacity: 1;
+            width: 12px;
+            height: 12px;
+        }
+        
+        .swiper-pagination-bullet-active {
+            background: var(--warm-orange);
+        }
+        
+        /* Story Section */
+        .story-container {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            border: 5px solid var(--sketch-brown);
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            box-shadow: 
+                12px 12px 0px rgba(0,0,0,0.1),
+                inset 0 0 0 3px rgba(255,255,255,0.5);
+            position: relative;
+        }
+        
+        .story-container::before {
+            content: '🏥';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            background: var(--warm-orange);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 5px solid var(--sketch-brown);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+            z-index: 10;
+        }
+        
+        .story-title {
+            font-family: 'Caveat', cursive;
+            font-size: 4rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .story-text {
+            font-family: 'Kalam', cursive;
+            font-size: 1.25rem;
+            line-height: 2;
+            color: #444;
+        }
+        
+        .highlight-text {
+            background: linear-gradient(135deg, #feff9c 0%, #fff740 100%);
+            padding: 0.2rem 0.5rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M0,50 Q25,40 50,50 T100,50" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .swiper {
+                height: 400px;
+            }
+            
+            .secondary-nav {
+                margin-top: 6rem;
+            }
+            
+            .secondary-nav a {
+                font-size: 1rem;
+                padding: 0.4rem 1rem;
+            }
+            
+            .story-title {
+                font-size: 3rem;
+            }
+            
+            .story-text {
+                font-size: 1.1rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+        }
+
+        
+      /* Modern Navbar Styles */
+      .modern-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 245, 230, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-bottom: 3px solid var(--sketch-brown);
+      }
+
+      .navbar-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-logo {
+        font-family: "Pacifico", cursive;
+        font-size: 1.8rem;
+        color: var(--warm-orange);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-logo:hover {
+        transform: scale(1.05);
+        color: var(--sketch-brown);
+      }
+
+      /* Desktop Menu */
+      .desktop-menu {
+        display: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .desktop-menu {
+          display: flex;
+        }
+      }
+
+      .menu-item {
+        position: relative;
+      }
+
+      .menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1.2rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        background: transparent;
+        border: 2px solid transparent;
+      }
+
+      .menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
+      }
+
+      /* Dropdown Container */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 0.8rem;
+      }
+
+      .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Menu */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border: 3px solid var(--sketch-brown);
+        border-radius: 15px;
+        padding: 1rem 0;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+      }
+
+      .dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        display: block;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--warm-orange), transparent);
+        border-left-color: var(--warm-orange);
+        color: var(--charcoal);
+        padding-left: 2rem;
+      }
+
+      /* Donate Button */
+      .donate-btn {
+        background: var(--warm-orange);
+        color: white;
+        padding: 0.8rem 2rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .donate-btn:hover {
+        background: var(--sketch-brown);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Mobile Menu Button */
+      .mobile-menu-btn {
+        display: block;
+        background: var(--warm-orange);
+        border: none;
+        padding: 0.6rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-menu-btn {
+          display: none;
+        }
+      }
+
+      .mobile-menu-btn:hover {
+        background: var(--sketch-brown);
+        transform: scale(1.1);
+      }
+
+      .mobile-menu-btn svg {
+        width: 30px;
+        height: 30px;
+        color: white;
+      }
+
+      /* Mobile Sidebar Menu */
+      .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 9999;
+        overflow-y: auto;
+        border-left: 4px solid var(--sketch-brown);
+      }
+
+      .mobile-sidebar.active {
+        right: 0;
+      }
+
+      .mobile-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--warm-orange);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-close-btn:hover {
+        background: var(--sketch-brown);
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu-content {
+        padding: 4rem 1.5rem 2rem;
+      }
+
+      .mobile-menu-item {
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 1rem;
+        display: block;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .mobile-menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        border-color: var(--sketch-brown);
+        transform: translateX(10px);
+      }
+
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        background: transparent;
+        border: 2px solid transparent;
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-dropdown-toggle:hover {
+        background: rgba(255, 127, 80, 0.1);
+        border-color: var(--warm-orange);
+      }
+
+      .mobile-dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+      }
+
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        padding-left: 1rem;
+      }
+
+      .mobile-dropdown-menu.active {
+        max-height: 500px;
+      }
+
+      .mobile-dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1rem;
+        display: block;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .mobile-dropdown-item:hover {
+        background: rgba(255, 127, 80, 0.2);
+        border-left-color: var(--warm-orange);
+        padding-left: 1.5rem;
+      }
+
+      /* Overlay */
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 9998;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Body padding for fixed navbar */
+      body {
+        padding-top: 80px;
+      }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+   <nav class="modern-navbar">
+      <div class="navbar-content">
+        <!-- Logo -->
+        <a href="index.html" class="navbar-logo">Mission Needy People ✨</a>
+
+        <!-- Desktop Menu -->
+        <div class="desktop-menu">
+          <div class="menu-item">
+            <a href="index.html" class="menu-link">Home</a>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              About Us <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="vision.html" class="dropdown-item"
+                > Vision & Mission</a
+              >
+              <a href="ourmentors.html" class="dropdown-item"> Our Mentors</a>
+              <a href="working.html" class="dropdown-item"> Working Model</a>
+              <a href="reach.html" class="dropdown-item"> Reach & Presence</a>
+              <a href="gallery.html" class="dropdown-item"> Gallery</a>
+            </div>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              Our Work <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="health.html" class="dropdown-item"> Health</a>
+              <a href="education.html" class="dropdown-item"> Education</a>
+              <a href="food.html" class="dropdown-item"> Food</a>
+              <a href="clothes.html" class="dropdown-item"> Clothes</a>
+              <a href="drinkingwater.html" class="dropdown-item"
+                > Drinking Water</a
+              >
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <a href="contactus.html" class="menu-link">Contact</a>
+          </div>
+
+          <a href="donate.html" class="donate-btn">Donate ❤️</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+      <button class="mobile-close-btn" onclick="toggleMobileMenu()">×</button>
+
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-item">
+          <a href="index.html" class="mobile-menu-link"> Home</a>
+        </div>
+
+        <!-- About Us Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('aboutDropdown')"
+          >
+            <span> About Us</span>
+            <span class="mobile-dropdown-arrow" id="aboutArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="aboutDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="vision.html" class="mobile-dropdown-item"
+              > Vision & Mission</a
+            >
+            <a href="ourmentors.html" class="mobile-dropdown-item"
+              > Our Mentors</a
+            >
+            <a href="working.html" class="mobile-dropdown-item"
+              > Working Model</a
+            >
+            <a href="reach.html" class="mobile-dropdown-item"
+              > Reach & Presence</a
+            >
+            <a href="gallery.html" class="mobile-dropdown-item"> Gallery</a>
+          </div>
+        </div>
+
+        <!-- Our Work Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('workDropdown')"
+          >
+            <span> Our Work</span>
+            <span class="mobile-dropdown-arrow" id="workArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="workDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="health.html" class="mobile-dropdown-item"> Health</a>
+            <a href="education.html" class="mobile-dropdown-item"
+              > Education</a
+            >
+            <a href="food.html" class="mobile-dropdown-item"> Food</a>
+            <a href="clothes.html" class="mobile-dropdown-item"> Clothes</a>
+            <a href="drinkingwater.html" class="mobile-dropdown-item"
+              > Drinking Water</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="contactus.html" class="mobile-menu-link"> Contact</a>
+        </div>
+
+        <div class="mobile-menu-item" style="margin-top: 2rem">
+          <a
+            href="donate.html"
+            class="donate-btn"
+            style="width: 100%; text-align: center; display: block"
+            >Donate Now ❤️</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobileOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+
+    <!-- Secondary Navigation -->
+    <section class="py-4 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="secondary-nav max-w-4xl mx-auto">
+                <div class="flex flex-wrap justify-center items-center gap-4">
+                    <a href="health.html" class="active"> Health</a>
+                    <a href="education.html"> Education</a>
+                    <a href="food.html"> Food</a>
+                    <a href="clothes.html"> Clothes</a>
+                    <a href="drinkingwater.html"> Water</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Carousel Section -->
+    <section class="py-4 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="carousel-container">
+                <div class="swiper healthSwiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <img src="image/health1.jpg" alt="Health Initiative 1">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="image/health2.jpg" alt="Health Initiative 2">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="image/health3.webp" alt="Health Initiative 3">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="image/health4.jpg" alt="Health Initiative 4">
+                        </div>
+                        <div class="swiper-slide">
+                            <img src="image/health5.png" alt="Health Initiative 5">
+                        </div>
+                    </div>
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                    <div class="swiper-pagination"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Story Section -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="story-container max-w-5xl mx-auto">
+                <h2 class="story-title">स्वास्थ्य - एक कहानी <i class="fas fa-heartbeat text-4xl"></i></h2>
+                
+                <div class="story-text">
+                    <p class="mb-6">
+                        <span class="highlight-text">With the help of a Short Story</span> I would like to explain this Health section.
+                    </p>
+                    
+                    <p class="mb-6">
+                        Ek baar main bus se travel kar raha tha, mere baju mein ek aunty ji ek choti si bachhi ko liye baithi thi jiske nose pe tube padi huyi thi, hatho mein injection pin lagi huyi thi. Thodi der baad pata chala aur aunty ji told them that baby's parents was expired from accident. Ye sab sunte hi meri aankhe usi pal aasu se bhar gayi.
+                    </p>
+                    
+                    <p class="mb-6">
+                        Maybe you have thought that she is belonging from a very rich family, actually you are wrong. Vo ek bahot hi gareeb pariwar se dikh rahi thi.
+                    </p>
+                    
+                    <p class="mb-6">
+                        Aap sab daily kisi na kisi kaam se bahar market jaate hi honge aur kahin na kahin aap kai aise logo ko dekhte honge jo road pe bahot buri situation mein pade rahte hain aur kuch <span class="highlight-text">paglo jaise ghumte rahte hain</span>. Unke paas khane ke liye kuch bhi nahi hota hai aur vo na jaane kaisi gandi gandi cheeze khaate hain, kharab khana vo khaate hain.
+                    </p>
+                    
+                    <p class="mb-6">
+                        And you can see that these types of people have more chance of being affected by many <span class="highlight-text">dangerous diseases</span>.
+                    </p>
+                    
+                    <p class="mb-6">
+                        You know one thing - everyone will see these types of people but no one helps them. Because you are not humans if you are, then you will definitely help them. Some good-hearted humans are very good and they are helping needy people with the help of donations.
+                    </p>
+                    
+                    <p class="mb-6">
+                        <span class="highlight-text text-2xl">Main gareebron ke liye ek bahot bada hospital kholna chahta hu</span> jismein main un sabhi logo ka free treatment kar saku jinke paas paise nahi hote hain, jo log sadko pe bimaar pade rahte hain, jo log dimaagi bimaariyon se pidit rahte hain.
+                    </p>
+                    
+                    <p class="mb-6">
+                        Ye mera sapna hai aur main is sapne ko puri karne mein apni saari takat laga dunga.
+                    </p>
+                    
+                    <p class="mb-6">
+                        <strong>But my this Dream will not be completed without your help.</strong> So all of you please help me and donate some amount of money from your pocket money.
+                    </p>
+                    
+                    <p class="text-center text-2xl" style="color: var(--warm-orange); font-weight: bold;">
+                        When you will think that this is not only my Dream, this is every good-hearted human's Dream, then you will definitely do something for them. ❤️
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 relative z-10" style="background: linear-gradient(135deg, var(--warm-orange), var(--gentle-yellow));">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto bg-white p-12 rounded-3xl border-8 border-charcoal shadow-2xl" style="clip-path: polygon(2% 0%, 98% 2%, 100% 98%, 0% 100%);">
+                <h2 class="text-5xl mb-6" style="font-family: 'Caveat', cursive; font-weight: 700; color: var(--charcoal);">
+                    Help Us Build a Free Hospital! <i class="fas fa-hospital text-4xl"></i>
+                </h2>
+                <p class="text-xl mb-8" style="font-family: 'Kalam', cursive; line-height: 1.8;">
+                    Your contribution can help us provide free healthcare to those who need it most. Together, we can save lives!
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="donate.html">
+                        <button class="sketch-btn">
+                            <i class="fas fa-hand-holding-heart"></i> Donate Now
+                        </button>
+                    </a>
+                    <a href="contactus.html">
+                        <button class="sketch-btn" style="background: var(--charcoal);">
+                            <i class="fas fa-handshake"></i> Volunteer
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-16 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-3xl mb-6" style="font-family: 'Pacifico', cursive; color: var(--warm-orange);">
+                        Mission Needy People
+                    </h3>
+                    <p class="text-gray-300 mb-4" style="font-family: 'Kalam', cursive; font-size: 1.1rem;">
+                        Spreading love, hope & humanity across India. One smile at a time.
+                    </p>
+                    <div class="space-y-2 text-gray-300" style="font-family: 'Patrick Hand', cursive; font-size: 1.1rem;">
+                        <p><i class="fas fa-phone"></i> +91-8602507957</p>
+                        <p><i class="fas fa-phone"></i> +91-9340413954</p>
+                        <p><i class="fas fa-phone"></i> +91-9425634860</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">About</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="overview.html" class="text-gray-300 hover:text-orange-400 transition">Overview</a></li>
+                        <li><a href="vision.html" class="text-gray-300 hover:text-orange-400 transition">Vision & Mission</a></li>
+                        <li><a href="ourmentors.html" class="text-gray-300 hover:text-orange-400 transition">Our Mentors</a></li>
+                        <li><a href="working.html" class="text-gray-300 hover:text-orange-400 transition">Working Model</a></li>
+                        <li><a href="reach.html" class="text-gray-300 hover:text-orange-400 transition">Reach & Presence</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400 transition">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">Our Work</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="overview.html" class="text-gray-300 hover:text-orange-400 transition">Overview</a></li>
+                        <li><a href="health.html" class="text-gray-300 hover:text-orange-400 transition">Health</a></li>
+                        <li><a href="education.html" class="text-gray-300 hover:text-orange-400 transition">Education</a></li>
+                        <li><a href="food.html" class="text-gray-300 hover:text-orange-400 transition">Food</a></li>
+                        <li><a href="clothes.html" class="text-gray-300 hover:text-orange-400 transition">Clothes</a></li>
+                        <li><a href="drinkingwater.html" class="text-gray-300 hover:text-orange-400 transition">Drinking Water</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">Quick Links</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="donate.html" class="text-gray-300 hover:text-orange-400 transition"> Donate</a></li>
+                        <li><a href="aboutus.html" class="text-gray-300 hover:text-orange-400 transition"> About Us</a></li>
+                        <li><a href="contactus.html" class="text-gray-300 hover:text-orange-400 transition"> Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t-4 border-dashed border-gray-600 pt-8 text-center">
+                <p class="text-gray-400 text-lg" style="font-family: 'Kalam', cursive;">
+                    © 2026 Mission Needy People. Made with ❤️ for humanity.
+                </p>
+                <p class="text-gray-500 mt-2" style="font-family: 'Patrick Hand', cursive;">
+                    "Health is wealth, and everyone deserves access to it."
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+
+    <script>
+      // Toggle Mobile Menu
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById("mobileSidebar");
+        const overlay = document.getElementById("mobileOverlay");
+
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Prevent body scroll when menu is open
+        if (sidebar.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+
+      // Toggle Mobile Dropdown
+      function toggleMobileDropdown(id) {
+        const dropdown = document.getElementById(id);
+        const arrow = document.getElementById(id.replace("Dropdown", "Arrow"));
+
+        dropdown.classList.toggle("active");
+
+        if (dropdown.classList.contains("active")) {
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          arrow.style.transform = "rotate(0deg)";
+        }
+      }
+
+      // Close mobile menu on link click
+      document
+        .querySelectorAll(".mobile-dropdown-item, .mobile-menu-link")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            toggleMobileMenu();
+          });
+        });
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".modern-navbar");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          navbar.style.boxShadow = "0 4px 30px rgba(0,0,0,0.2)";
+        } else {
+          navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+
+
+    
+    <script>
+        // Initialize Swiper
+        var swiper = new Swiper(".healthSwiper", {
+            autoplay: {
+                delay: 3500,
+                disableOnInteraction: false,
+            },
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            loop: true,
+        });
+        
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('translate-x-full');
+        }
+        
+        // Close menu on click outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = e.target.closest('button');
+            if (!menu.contains(e.target) && !menuButton && !menu.classList.contains('translate-x-full')) {
+                menu.classList.add('translate-x-full');
+            }
+        });
+        
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)';
+            } else {
+                navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            }
+        });
+    </script>
+</body>
+</html>

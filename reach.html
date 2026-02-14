@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reach & Presence - Mission Needy People</title>
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HEAD section mein ye CDN link add karo -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Architects+Daughter&family=Kalam:wght@300;400;700&family=Pacifico&family=Patrick+Hand&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sketch-brown: #8B4513;
+            --warm-orange: #FF7F50;
+            --gentle-yellow: #FFD700;
+            --soft-blue: #87CEEB;
+            --cream-paper: #FFF5E6;
+            --charcoal: #2C2C2C;
+            --heart-red: #DC143C;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Kalam', cursive;
+            background: var(--cream-paper);
+            color: var(--charcoal);
+            overflow-x: hidden;
+            position: relative;
+        }
+        
+        /* Paper Texture Background */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(
+                    0deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(139, 69, 19, 0.02) 2px,
+                    rgba(139, 69, 19, 0.02) 4px
+                ),
+                url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+            pointer-events: none;
+            z-index: 1;
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 12px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: var(--cream-paper);
+            border-left: 2px dashed var(--sketch-brown);
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: var(--warm-orange);
+            border-radius: 10px;
+            border: 2px solid var(--cream-paper);
+        }
+        
+        /* Navbar */
+        .navbar {
+            position: fixed;
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: rgba(255, 245, 230, 0.98);
+            padding: 1rem 2rem;
+            border-radius: 20px;
+            box-shadow: 
+                0 10px 30px rgba(0,0,0,0.15),
+                inset 0 1px 0 rgba(255,255,255,0.8);
+            z-index: 1000;
+            border: 3px solid var(--sketch-brown);
+            clip-path: polygon(
+                1% 0%, 99% 2%, 100% 98%, 0% 100%
+            );
+            backdrop-filter: blur(10px);
+            max-width: 95%;
+        }
+        
+        .nav-link {
+            position: relative;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--charcoal);
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 3px;
+            background: var(--warm-orange);
+            transform: translateX(-50%);
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav-link:hover::after {
+            width: 80%;
+        }
+        
+        .nav-link:hover {
+            color: var(--warm-orange);
+            transform: translateY(-2px);
+        }
+        
+        /* Sketch Button */
+        .sketch-btn {
+            position: relative;
+            background: var(--warm-orange);
+            color: white;
+            padding: 1rem 2.5rem;
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            transition: all 0.3s ease;
+            box-shadow: 
+                4px 4px 0px rgba(0,0,0,0.2),
+                -1px -1px 0px rgba(255,255,255,0.5);
+        }
+        
+        .sketch-btn:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 
+                6px 6px 0px rgba(0,0,0,0.3),
+                -2px -2px 0px rgba(255,255,255,0.5);
+        }
+        
+        /* Page Header */
+        .page-header {
+            padding: 10rem 2rem 4rem;
+            background: linear-gradient(135deg, rgba(255, 127, 80, 0.15), rgba(135, 206, 235, 0.15));
+            position: relative;
+            text-align: center;
+        }
+        
+        .page-title {
+            font-family: 'Caveat', cursive;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            color: var(--charcoal);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .page-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 10%;
+            right: 10%;
+            height: 4px;
+            background: var(--warm-orange);
+            border-radius: 2px;
+        }
+        
+        /* Photo Card - Polaroid Style */
+        .photo-card {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+            border: 4px solid var(--sketch-brown);
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            box-shadow: 
+                8px 8px 0px rgba(0,0,0,0.1),
+                inset 0 0 0 2px rgba(255,255,255,0.5);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transform: rotate(var(--rotation, 0deg));
+        }
+        
+        .photo-card:hover {
+            transform: rotate(0deg) scale(1.05);
+            box-shadow: 
+                12px 12px 0px rgba(0,0,0,0.15),
+                inset 0 0 0 2px rgba(255,255,255,0.5);
+            z-index: 10;
+        }
+        
+        .photo-card img {
+            width: 100%;
+            height: 400px;
+            object-fit: cover;
+            border-radius: 5px;
+            border: 2px solid var(--sketch-brown);
+        }
+        
+        /* Message Box - Typewriter Style */
+        .message-box {
+            background: white;
+            border-radius: 30px;
+            padding: 3rem;
+            border: 5px solid var(--sketch-brown);
+            clip-path: polygon(
+                2% 0%, 98% 1%, 99% 98%, 1% 99%
+            );
+            box-shadow: 
+                12px 12px 0px rgba(0,0,0,0.1),
+                inset 0 0 0 3px rgba(255,255,255,0.5);
+            position: relative;
+        }
+        
+        .message-box::before {
+            content: '✋';
+            position: absolute;
+            top: -30px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 3rem;
+            background: var(--warm-orange);
+            width: 80px;
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            border: 5px solid var(--sketch-brown);
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.2);
+            z-index: 10;
+            animation: wave 2s ease-in-out infinite;
+        }
+        
+        @keyframes wave {
+            0%, 100% { transform: translateX(-50%) rotate(0deg); }
+            25% { transform: translateX(-50%) rotate(20deg); }
+            75% { transform: translateX(-50%) rotate(-20deg); }
+        }
+        
+        .message-title {
+            font-family: 'Caveat', cursive;
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--charcoal);
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .message-content {
+            font-family: 'Patrick Hand', cursive;
+            font-size: 1.3rem;
+            line-height: 2;
+            color: #444;
+            white-space: pre-line;
+        }
+        
+        .message-content strong {
+            color: var(--warm-orange);
+            font-weight: bold;
+        }
+        
+        /* Highlight Box */
+        .highlight-box {
+            background: linear-gradient(135deg, #feff9c 0%, #fff740 100%);
+            padding: 1.5rem;
+            border-radius: 15px;
+            border: 3px solid var(--sketch-brown);
+            margin: 1.5rem 0;
+            box-shadow: 5px 5px 0px rgba(0,0,0,0.1);
+        }
+        
+        /* Footer */
+        .footer {
+            background: var(--charcoal);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M0,50 Q25,40 50,50 T100,50" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></svg>');
+            opacity: 0.3;
+        }
+        
+        /* Mobile Menu */
+        .mobile-menu {
+            transform: translateX(100%);
+            transition: transform 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .page-title {
+                font-size: 3rem;
+            }
+            
+            .photo-card img {
+                height: 300px;
+            }
+            
+            .message-content {
+                font-size: 1.1rem;
+            }
+            
+            .navbar {
+                padding: 1rem;
+            }
+        }
+
+        
+      /* Modern Navbar Styles */
+      .modern-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 245, 230, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-bottom: 3px solid var(--sketch-brown);
+      }
+
+      .navbar-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-logo {
+        font-family: "Pacifico", cursive;
+        font-size: 1.8rem;
+        color: var(--warm-orange);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-logo:hover {
+        transform: scale(1.05);
+        color: var(--sketch-brown);
+      }
+
+      /* Desktop Menu */
+      .desktop-menu {
+        display: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .desktop-menu {
+          display: flex;
+        }
+      }
+
+      .menu-item {
+        position: relative;
+      }
+
+      .menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1.2rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        background: transparent;
+        border: 2px solid transparent;
+      }
+
+      .menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
+      }
+
+      /* Dropdown Container */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 0.8rem;
+      }
+
+      .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Menu */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border: 3px solid var(--sketch-brown);
+        border-radius: 15px;
+        padding: 1rem 0;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+      }
+
+      .dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        display: block;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--warm-orange), transparent);
+        border-left-color: var(--warm-orange);
+        color: var(--charcoal);
+        padding-left: 2rem;
+      }
+
+      /* Donate Button */
+      .donate-btn {
+        background: var(--warm-orange);
+        color: white;
+        padding: 0.8rem 2rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .donate-btn:hover {
+        background: var(--sketch-brown);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Mobile Menu Button */
+      .mobile-menu-btn {
+        display: block;
+        background: var(--warm-orange);
+        border: none;
+        padding: 0.6rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-menu-btn {
+          display: none;
+        }
+      }
+
+      .mobile-menu-btn:hover {
+        background: var(--sketch-brown);
+        transform: scale(1.1);
+      }
+
+      .mobile-menu-btn svg {
+        width: 30px;
+        height: 30px;
+        color: white;
+      }
+
+      /* Mobile Sidebar Menu */
+      .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 9999;
+        overflow-y: auto;
+        border-left: 4px solid var(--sketch-brown);
+      }
+
+      .mobile-sidebar.active {
+        right: 0;
+      }
+
+      .mobile-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--warm-orange);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-close-btn:hover {
+        background: var(--sketch-brown);
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu-content {
+        padding: 4rem 1.5rem 2rem;
+      }
+
+      .mobile-menu-item {
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 1rem;
+        display: block;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .mobile-menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        border-color: var(--sketch-brown);
+        transform: translateX(10px);
+      }
+
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        background: transparent;
+        border: 2px solid transparent;
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-dropdown-toggle:hover {
+        background: rgba(255, 127, 80, 0.1);
+        border-color: var(--warm-orange);
+      }
+
+      .mobile-dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+      }
+
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        padding-left: 1rem;
+      }
+
+      .mobile-dropdown-menu.active {
+        max-height: 500px;
+      }
+
+      .mobile-dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1rem;
+        display: block;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .mobile-dropdown-item:hover {
+        background: rgba(255, 127, 80, 0.2);
+        border-left-color: var(--warm-orange);
+        padding-left: 1.5rem;
+      }
+
+      /* Overlay */
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 9998;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Body padding for fixed navbar */
+      body {
+        padding-top: 80px;
+      }
+    </style>
+</head>
+<body>
+    
+    <!-- Navbar -->
+    <nav class="modern-navbar">
+      <div class="navbar-content">
+        <!-- Logo -->
+        <a href="index.html" class="navbar-logo">Mission Needy People ✨</a>
+
+        <!-- Desktop Menu -->
+        <div class="desktop-menu">
+          <div class="menu-item">
+            <a href="index.html" class="menu-link">Home</a>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              About Us <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="vision.html" class="dropdown-item"
+                > Vision & Mission</a
+              >
+              <a href="ourmentors.html" class="dropdown-item"> Our Mentors</a>
+              <a href="working.html" class="dropdown-item"> Working Model</a>
+              <a href="reach.html" class="dropdown-item"> Reach & Presence</a>
+              <a href="gallery.html" class="dropdown-item"> Gallery</a>
+            </div>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              Our Work <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="health.html" class="dropdown-item"> Health</a>
+              <a href="education.html" class="dropdown-item"> Education</a>
+              <a href="food.html" class="dropdown-item"> Food</a>
+              <a href="clothes.html" class="dropdown-item"> Clothes</a>
+              <a href="drinkingwater.html" class="dropdown-item"
+                > Drinking Water</a
+              >
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <a href="contactus.html" class="menu-link">Contact</a>
+          </div>
+
+          <a href="donate.html" class="donate-btn">Donate ❤️</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+      <button class="mobile-close-btn" onclick="toggleMobileMenu()">×</button>
+
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-item">
+          <a href="index.html" class="mobile-menu-link"> Home</a>
+        </div>
+
+        <!-- About Us Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('aboutDropdown')"
+          >
+            <span> About Us</span>
+            <span class="mobile-dropdown-arrow" id="aboutArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="aboutDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="vision.html" class="mobile-dropdown-item"
+              > Vision & Mission</a
+            >
+            <a href="ourmentors.html" class="mobile-dropdown-item"
+              > Our Mentors</a
+            >
+            <a href="working.html" class="mobile-dropdown-item"
+              > Working Model</a
+            >
+            <a href="reach.html" class="mobile-dropdown-item"
+              > Reach & Presence</a
+            >
+            <a href="gallery.html" class="mobile-dropdown-item"> Gallery</a>
+          </div>
+        </div>
+
+        <!-- Our Work Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('workDropdown')"
+          >
+            <span> Our Work</span>
+            <span class="mobile-dropdown-arrow" id="workArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="workDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="health.html" class="mobile-dropdown-item"> Health</a>
+            <a href="education.html" class="mobile-dropdown-item"
+              > Education</a
+            >
+            <a href="food.html" class="mobile-dropdown-item"> Food</a>
+            <a href="clothes.html" class="mobile-dropdown-item"> Clothes</a>
+            <a href="drinkingwater.html" class="mobile-dropdown-item"
+              > Drinking Water</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="contactus.html" class="mobile-menu-link"> Contact</a>
+        </div>
+
+        <div class="mobile-menu-item" style="margin-top: 2rem">
+          <a
+            href="donate.html"
+            class="donate-btn"
+            style="width: 100%; text-align: center; display: block"
+            >Donate Now ❤️</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobileOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+
+    <!-- Page Header -->
+    <section class="page-header">
+        <h1 class="page-title">हमारी पहुंच <i class="fas fa-earth"></i></h1>
+        <p class="text-2xl mt-6" style="font-family: 'Architects Daughter', cursive; color: #666;">
+            Our presence across communities, touching lives everywhere
+        </p>
+    </section>
+
+    <!-- Photo Gallery Section -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-12">
+                <h2 class="text-5xl font-bold" style="font-family: 'Caveat', cursive; color: var(--charcoal);">
+                    Our Impact in Pictures <i class="fas fa-images"></i>
+                </h2>
+                <p class="text-xl mt-4" style="font-family: 'Kalam', cursive; color: #666;">
+                    Moments that define our mission
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+                <!-- Photo 1 -->
+                <div class="photo-card" style="--rotation: -2deg;">
+                    <img src="image/help1.jpg" alt="Helping the needy">
+                </div>
+                
+                <!-- Photo 2 -->
+                <div class="photo-card" style="--rotation: 3deg;">
+                    <img src="image/clothes8.jpg" alt="Clothing distribution">
+                </div>
+                
+                <!-- Photo 3 -->
+                <div class="photo-card" style="--rotation: 2deg;">
+                    <img src="image/clothes6.jpg" alt="Community service">
+                </div>
+                
+                <!-- Photo 4 -->
+                <div class="photo-card" style="--rotation: -3deg;">
+                    <img src="image/help4.jpg" alt="Mission in action">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Helping Hands Message Section -->
+    <section class="py-16 relative z-10">
+        <div class="container mx-auto px-6">
+            <div class="message-box max-w-5xl mx-auto">
+                <h2 class="message-title">Helping Hands <i class="fas fa-handshake"></i></h2>
+                <div class="message-content">
+If you feel the urge to help the needy, you can do it in any way. You don't need a wallet.
+
+<div class="highlight-box">
+<strong>Here are few things that you can do:</strong>
+</div>
+
+<strong>1)</strong> Help the poor student by giving them your old books.
+
+<strong>2)</strong> You can let go that extra blanket in your wardrobe, humanity needs it.
+
+<strong>3)</strong> Have low self esteem, they wish for a better life - leave them feeling valued even if you don't have a dime to offer, don't give that awkward look when they ask for money.
+
+<strong>4)</strong> When travelling somewhere, keep stack of biscuits in your car, many kids ask for money in traffic signals, instead give them biscuits that can feed their hunger.
+
+<strong>5)</strong> You buy a movie ticket worth Rs.300 at the cinema - the poor doesn't have such surplus. You can invite them to spend some time with you alone.
+
+<strong>6)</strong> You can start by donating your old clothes, books and your toys.
+
+<strong>7)</strong> You can even donate your old school bags and shoes.
+
+<strong>8)</strong> It could be anything as long as accompanied by a good heart. Even a small thing can bring so much happiness. Something you can never find these days.
+
+<div class="highlight-box text-center">
+<strong style="font-size: 1.5rem;">Kind words and a hearty meal by each person can change their life.</strong>
+</div>
+
+Humans are everywhere but only few of them are Humane.
+
+I admire you for even reading this till the end, please take a day to change their life.
+
+Show them humanity still exists.
+
+So please do help the needy ones 
+
+<strong>Ps.</strong> I'm a student too. Let's put our hands together and start today.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="py-16 relative z-10" style="background: linear-gradient(135deg, var(--warm-orange), var(--gentle-yellow));">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto bg-white p-12 rounded-3xl border-8 border-charcoal shadow-2xl" style="clip-path: polygon(2% 0%, 98% 2%, 100% 98%, 0% 100%);">
+                <h2 class="text-5xl mb-6" style="font-family: 'Caveat', cursive; font-weight: 700; color: var(--charcoal);">
+                    Ready to Make an Impact? 🌟
+                </h2>
+                <p class="text-xl mb-8" style="font-family: 'Kalam', cursive; line-height: 1.8;">
+                    Every small action creates big ripples. Join us in spreading hope, love, and humanity across India!
+                </p>
+                <div class="flex flex-wrap justify-center gap-4">
+                    <a href="donate.html">
+                        <button class="sketch-btn">
+                            <i class="fas fa-hand-holding-heart"></i> Donate Now
+                        </button>
+                    </a>
+                    <a href="contactus.html">
+                        <button class="sketch-btn" style="background: var(--charcoal);">
+                            <i class="fas fa-handshake"></i> Join Our Mission
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer py-16 relative">
+        <div class="container mx-auto px-6 relative z-10">
+            <div class="grid md:grid-cols-4 gap-8 mb-12">
+                <div>
+                    <h3 class="text-3xl mb-6" style="font-family: 'Pacifico', cursive; color: var(--warm-orange);">
+                        Mission Needy People
+                    </h3>
+                    <p class="text-gray-300 mb-4" style="font-family: 'Kalam', cursive; font-size: 1.1rem;">
+                        Spreading love, hope & humanity across India. One smile at a time.
+                    </p>
+                    <div class="space-y-2 text-gray-300" style="font-family: 'Patrick Hand', cursive; font-size: 1.1rem;">
+                        <p><i class="fas fa-phone text-xl"></i> +91-8602507957</p>
+                        <p><i class="fas fa-phone text-xl"></i> +91-9340413954</p>
+                        <p><i class="fas fa-phone text-xl"></i> +91-9425634860</p>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">About</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="overview.html" class="text-gray-300 hover:text-orange-400 transition">Overview</a></li>
+                        <li><a href="vision.html" class="text-gray-300 hover:text-orange-400 transition">Vision & Mission</a></li>
+                        <li><a href="ourmentors.html" class="text-gray-300 hover:text-orange-400 transition">Our Mentors</a></li>
+                        <li><a href="working.html" class="text-gray-300 hover:text-orange-400 transition">Working Model</a></li>
+                        <li><a href="reach.html" class="text-gray-300 hover:text-orange-400 transition">Reach & Presence</a></li>
+                        <li><a href="gallery.html" class="text-gray-300 hover:text-orange-400 transition">Gallery</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">Our Work</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="overview.html" class="text-gray-300 hover:text-orange-400 transition">Overview</a></li>
+                        <li><a href="health.html" class="text-gray-300 hover:text-orange-400 transition">Health</a></li>
+                        <li><a href="education.html" class="text-gray-300 hover:text-orange-400 transition">Education</a></li>
+                        <li><a href="food.html" class="text-gray-300 hover:text-orange-400 transition">Food</a></li>
+                        <li><a href="clothes.html" class="text-gray-300 hover:text-orange-400 transition">Clothes</a></li>
+                        <li><a href="drinkingwater.html" class="text-gray-300 hover:text-orange-400 transition">Drinking Water</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="text-2xl mb-4 text-white" style="font-family: 'Patrick Hand', cursive;">Quick Links</h4>
+                    <ul class="space-y-2" style="font-family: 'Kalam', cursive;">
+                        <li><a href="donate.html" class="text-gray-300 hover:text-orange-400 transition"> Donate</a></li>
+                        <li><a href="aboutus.html" class="text-gray-300 hover:text-orange-400 transition"> About Us</a></li>
+                        <li><a href="contactus.html" class="text-gray-300 hover:text-orange-400 transition"> Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t-4 border-dashed border-gray-600 pt-8 text-center">
+                <p class="text-gray-400 text-lg" style="font-family: 'Kalam', cursive;">
+                    © 2026 Mission Needy People. Made with ❤️ for humanity.
+                </p>
+                <p class="text-gray-500 mt-2" style="font-family: 'Patrick Hand', cursive;">
+                    "Small acts, when multiplied by millions, can transform the world."
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <script>
+      // Toggle Mobile Menu
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById("mobileSidebar");
+        const overlay = document.getElementById("mobileOverlay");
+
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Prevent body scroll when menu is open
+        if (sidebar.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+
+      // Toggle Mobile Dropdown
+      function toggleMobileDropdown(id) {
+        const dropdown = document.getElementById(id);
+        const arrow = document.getElementById(id.replace("Dropdown", "Arrow"));
+
+        dropdown.classList.toggle("active");
+
+        if (dropdown.classList.contains("active")) {
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          arrow.style.transform = "rotate(0deg)";
+        }
+      }
+
+      // Close mobile menu on link click
+      document
+        .querySelectorAll(".mobile-dropdown-item, .mobile-menu-link")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            toggleMobileMenu();
+          });
+        });
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".modern-navbar");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          navbar.style.boxShadow = "0 4px 30px rgba(0,0,0,0.2)";
+        } else {
+          navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+
+
+
+    <script>
+        // Mobile Menu Toggle
+        function toggleMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('translate-x-full');
+        }
+        
+        // Close menu on click outside
+        document.addEventListener('click', function(e) {
+            const menu = document.getElementById('mobileMenu');
+            const menuButton = e.target.closest('button');
+            if (!menu.contains(e.target) && !menuButton && !menu.classList.contains('translate-x-full')) {
+                menu.classList.add('translate-x-full');
+            }
+        });
+        
+        // Navbar shadow on scroll
+        window.addEventListener('scroll', function() {
+            const navbar = document.querySelector('.navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 15px 40px rgba(0,0,0,0.2)';
+            } else {
+                navbar.style.boxShadow = '0 10px 30px rgba(0,0,0,0.15)';
+            }
+        });
+    </script>
+</body>
+</html>

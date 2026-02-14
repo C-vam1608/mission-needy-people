@@ -1,0 +1,428 @@
+@media only screen and (max-width: 1004px){
+
+    .stand-1{
+        display: none;
+    }
+
+    .stand-2{
+        display: none;
+    }
+    /* index page ki responcive css  */
+    .bo{
+        padding-left: 136px;
+    }
+    .so{
+        margin-right: 200px;
+    }
+    .page{
+        margin-left: 24%;
+        display: block;
+        max-width: fit-content;
+    }
+    .col-md-4 img{
+        margin-left: 6%;
+    }
+    .card-body h2{
+        margin-left: 27%;
+    }
+    .blockquote-footer{
+        margin-left: 72%;
+    }
+    .mitag{
+        max-width: 150%; 
+      
+    }
+   
+    .gg{
+        margin-left: 35%;
+        max-width: 1%;
+        
+    }
+    
+    /* completed  */
+    /* overviwe completed  */
+    /* vission and mission completed */
+
+
+    /* our mentor responcive css  */
+    .mid .col-md-4 img{
+        max-width: 70%;
+    }
+    .men .col-md-4 img{
+        max-width: 60%;
+    }
+
+    /* completed  */
+
+
+    
+
+/* reach and presence responcive css  */
+
+.ajao pre{
+    max-width: min-content;
+    margin-right: 1%;
+    font-size: 10px;
+}
+
+/* completed  */
+
+/*working model responcive css   */
+.im img{
+    max-width: 100%;
+}
+
+.model img{
+    max-width: 100%;
+}
+
+/* completed  */
+
+/* gallery responcive css */
+
+#gallery{
+    max-width: 90%;
+}
+
+.vivo{
+    margin-top: 5%;
+    display: block;
+    /* margin-left: 4%; */
+}
+
+/* completed */
+
+/* donate responcive css  */
+.pay{
+    display: block;
+    background-image: url("image/card.jpg");
+    background-size: cover;
+    height: 1800px; 
+    text-decoration: none;
+    justify-content: space-around;
+    display: flex;
+    padding-bottom: 300px;
+    max-width: 100%;
+  
+}
+
+.pay .mai img{
+    max-width: 95%;
+    font-size: 50px;
+    margin-bottom: 8%;
+}
+.pay .mai {
+    justify-content: center;
+    text-align: center;
+    color:aliceblue;
+}
+
+
+
+
+/* about us responcive css  */
+
+.card img{
+    max-width: 98%;
+}
+
+/* completed  */
+
+/* contact us responcive */
+/* .fourth .one{
+    max-width: 40%;
+    text-decoration: none;
+    display: flex;
+    /* justify-content: space-around; */
+/*    
+}
+
+.pp{
+    background-image: url("image/pp.jpg");
+    background-size: cover;
+    
+  }  */
+
+.two{
+    max-width: 90%;
+     text-decoration: none; 
+    display: flex;
+    /* justify-content: space-around; */
+}
+
+}
+
+@media only screen and (max-width: 900px){
+
+    .two{
+        max-width: 10%;
+         text-decoration: none; 
+        display: flex;
+       
+        /* justify-content: space-around; */
+    }
+}
+
+
+@media only screen and (max-width: 430px){
+
+   .two{
+    display: none;
+   }
+
+}
+
+
+@media only screen and (max-width: 445px){
+
+
+     .youtube{
+        height: 78vh;
+        width: 57vw;
+       
+        margin-bottom: 20%;
+
+    }
+    .youtube video{
+        height: 87vh;
+        width: 65vw;
+    }
+    .insta{
+        margin-top: 124%;
+        height: 100vh;
+        width: 58vw;
+
+    } 
+    .insta video{
+        height: 87vh;
+        width: 65vw;
+    }
+
+    .gg{
+
+        margin-top: 43%;
+        margin-left: 8%;
+        max-width: 1%;
+        
+    }
+    .ab{
+        text-decoration: none;
+        display: block;
+    }
+    .a{
+        font-size: 47%;
+    }
+    .ab .onefirst{
+        font-size: 56%;
+    }
+    .mitag{
+        max-width: 120%; 
+      
+    }
+    
+
+    .love .col-md-4 img {
+        max-width: 88%;
+    }
+
+    .love .card-body h2{
+        margin-left: 18%;
+    }
+
+
+    .men  .col-md-4 img{
+        display: none;
+    }
+
+    .men .mid{
+        justify-content: left;
+        margin-left: -1%;
+       /* mid me le jane ki kosish jari hai hhahahahahaa     */
+       }
+
+    .model img{
+        height: 36vh;
+    }
+
+    .pay .mai img{
+        height: 47vh;
+        max-width: 95%;
+        font-size: 50px;
+        margin-bottom: 8%;
+    }
+
+    .carousel-item{
+        height: 59vh;
+    }
+
+  
+
+    .i-frame{
+        display: none;
+    }
+    .stand-1{
+        display: none;
+    }
+     
+    .stand-2{
+        display: none;
+    }
+}
+
+
+@media only screen and (max-width: 847px){
+
+  .stand-1{
+        display: none;
+    }
+     
+    .stand-2{
+        display: none;
+    }
+
+    
+    .i-frame{
+        display: none;
+    }
+
+    
+ .intro-text{
+    margin-left: 27%;
+  } 
+  
+  .two{
+    margin-left: 40%;
+  }
+
+ 
+}
+
+@media only screen and (max-width: 497px){
+
+    
+.two{
+    display: block;
+    margin-left: -7%;
+}
+
+#background{
+    padding-bottom: 1495%;
+}
+
+}
+
+
+@media only screen and (max-width: 1412px){
+
+.stand-1{
+    display: none;
+}
+
+.stand-2{
+    display: none;
+}
+}
+
+@media only screen and (max-width: 1000px){
+
+    .fourth{
+       margin: 32% ;
+    }
+
+
+      
+ .intro-text{
+    margin-left: 1%;
+  } 
+
+  .vivo{
+    margin-left: 29%;
+    margin-top: 39%;
+  }
+  
+  
+}
+
+
+ @media only screen and (max-width: 371px){
+
+.vivo{
+
+   display: none;
+}
+
+} 
+
+
+
+@media only screen and (max-width: 571px){
+
+    .vivo{
+    
+       display: none;
+    }
+   #background{
+    margin-bottom: 655%;
+   }
+    
+    }
+
+   
+    
+@media only screen and (max-width: 1280px){
+
+.im img{
+    max-width: 99%;
+}
+
+.pay{
+    margin-bottom: -9%;
+    height: 1551px;
+}
+
+}
+    
+   
+@media only screen and (max-width: 395px){
+
+    #background{
+        padding-bottom: 1572%;
+       }
+}
+
+  
+@media only screen and (max-width: 375px){
+
+    #background{
+        padding-bottom: 1936%;
+       } 
+} 
+
+  
+@media only screen and (max-width: 991px){
+
+    .lo{
+        margin-left: 20%;
+
+    }
+}
+
+  
+@media only screen and (max-width: 993px){
+    .burger{
+        display: block;
+        position: absolute;
+        cursor: pointer;
+        right: 1%;
+        top: 5px;
+      
+      }
+      .line{
+        display: block;
+       width: 33px;
+       background-color: white;
+       height: 4px;
+       margin: 8px 8px;
+      
+      }
+} 

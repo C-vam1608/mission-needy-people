@@ -1,0 +1,2652 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Mission Needy People - Spreading Hope & Humanity</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- HEAD section mein ye CDN link add karo -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+    />
+
+    <!-- Google Fonts - Unique Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;700&family=Architects+Daughter&family=Kalam:wght@300;400;700&family=Pacifico&family=Patrick+Hand&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --sketch-brown: #8b4513;
+        --warm-orange: #ff7f50;
+        --gentle-yellow: #ffd700;
+        --soft-blue: #87ceeb;
+        --cream-paper: #fff5e6;
+        --charcoal: #2c2c2c;
+        --heart-red: #dc143c;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Kalam", cursive;
+        background: var(--cream-paper);
+        color: var(--charcoal);
+        overflow-x: hidden;
+        position: relative;
+      }
+
+      /* Hand-drawn Paper Texture Background */
+      body::before {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image:
+          repeating-linear-gradient(
+            0deg,
+            transparent,
+            transparent 2px,
+            rgba(139, 69, 19, 0.02) 2px,
+            rgba(139, 69, 19, 0.02) 4px
+          ),
+          url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" /></filter><rect width="100" height="100" filter="url(%23noise)" opacity="0.05"/></svg>');
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      /* Animated Sketch Background Illustrations */
+      .sketch-background {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 0;
+        opacity: 0.08;
+      }
+
+      .sketch-element {
+        position: absolute;
+        animation: floatSketch 20s ease-in-out infinite;
+        opacity: 0.6;
+      }
+
+      @keyframes floatSketch {
+        0%,
+        100% {
+          transform: translate(0, 0) rotate(0deg);
+        }
+        33% {
+          transform: translate(30px, -20px) rotate(5deg);
+        }
+        66% {
+          transform: translate(-20px, 30px) rotate(-5deg);
+        }
+      }
+
+      /* Custom Scrollbar - Sketch Style */
+      ::-webkit-scrollbar {
+        width: 12px;
+      }
+
+      ::-webkit-scrollbar-track {
+        background: var(--cream-paper);
+        border-left: 2px dashed var(--sketch-brown);
+      }
+
+      ::-webkit-scrollbar-thumb {
+        background: var(--warm-orange);
+        border-radius: 10px;
+        border: 2px solid var(--cream-paper);
+      }
+
+      /* Hand-drawn Button Effect */
+      .sketch-btn {
+        position: relative;
+        background: var(--warm-orange);
+        color: white;
+        padding: 1rem 2.5rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        font-weight: bold;
+        border: none;
+        cursor: pointer;
+        clip-path: polygon(2% 0%, 98% 1%, 99% 98%, 1% 99%);
+        transition: all 0.3s ease;
+        box-shadow:
+          4px 4px 0px rgba(0, 0, 0, 0.2),
+          -1px -1px 0px rgba(255, 255, 255, 0.5);
+      }
+
+      .sketch-btn::before {
+        content: "";
+        position: absolute;
+        top: -3px;
+        left: -3px;
+        right: -3px;
+        bottom: -3px;
+        background: transparent;
+        border: 3px dashed var(--sketch-brown);
+        clip-path: polygon(2% 0%, 98% 1%, 99% 98%, 1% 99%);
+        opacity: 0;
+        transition: opacity 0.3s ease;
+      }
+
+      .sketch-btn:hover::before {
+        opacity: 1;
+      }
+
+      .sketch-btn:hover {
+        transform: translate(-2px, -2px);
+        box-shadow:
+          6px 6px 0px rgba(0, 0, 0, 0.3),
+          -2px -2px 0px rgba(255, 255, 255, 0.5);
+      }
+
+      .sketch-btn-outline {
+        background: transparent;
+        color: var(--charcoal);
+        border: 3px solid var(--charcoal);
+        clip-path: polygon(1% 2%, 99% 0%, 98% 99%, 2% 97%);
+      }
+
+      /* Hero Section - Scrapbook Style */
+      .hero-section {
+        position: relative;
+        min-height: 100vh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 8rem 2rem -1rem;
+        background: linear-gradient(
+          135deg,
+          rgba(255, 127, 80, 0.1) 0%,
+          rgba(135, 206, 235, 0.1) 100%
+        );
+        overflow: hidden;
+      }
+
+      /* Animated Hearts Falling */
+      @keyframes heartFall {
+        0% {
+          transform: translateY(-100px) rotate(0deg);
+          opacity: 0;
+        }
+        10% {
+          opacity: 1;
+        }
+        90% {
+          opacity: 1;
+        }
+        100% {
+          transform: translateY(100vh) rotate(360deg);
+          opacity: 0;
+        }
+      }
+
+      .heart {
+        position: absolute;
+        color: var(--heart-red);
+        font-size: 2rem;
+        opacity: 0.3;
+        animation: heartFall 15s linear infinite;
+        pointer-events: none;
+      }
+
+      .heart:nth-child(1) {
+        left: 10%;
+        animation-delay: 0s;
+      }
+      .heart:nth-child(2) {
+        left: 30%;
+        animation-delay: 3s;
+      }
+      .heart:nth-child(3) {
+        left: 50%;
+        animation-delay: 6s;
+      }
+      .heart:nth-child(4) {
+        left: 70%;
+        animation-delay: 9s;
+      }
+      .heart:nth-child(5) {
+        left: 90%;
+        animation-delay: 12s;
+      }
+
+      /* Hand-drawn Title */
+      .hero-title {
+        font-family: "Caveat", cursive;
+        font-size: clamp(3rem, 10vw, 8rem);
+        font-weight: 700;
+        color: var(--charcoal);
+        text-align: center;
+        padding-top: 1em;
+        line-height: 1.2;
+        position: relative;
+        animation: handWrite 2s ease-out;
+      }
+
+      @keyframes handWrite {
+        from {
+          opacity: 0;
+          transform: translateY(50px) rotate(-5deg);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0) rotate(0deg);
+        }
+      }
+
+      .hero-title::after {
+        content: "";
+        position: absolute;
+        bottom: -20px;
+        left: 10%;
+        right: 10%;
+        height: 4px;
+        background: var(--warm-orange);
+        border-radius: 2px;
+        animation: underlineDraw 1.5s ease-out 0.5s backwards;
+      }
+
+      @keyframes underlineDraw {
+        from {
+          transform: scaleX(0);
+        }
+        to {
+          transform: scaleX(1);
+        }
+      }
+
+      .hero-subtitle {
+        font-family: "Architects Daughter", cursive;
+        font-size: clamp(1.2rem, 3vw, 2rem);
+        color: var(--charcoal);
+        text-align: center;
+        max-width: 800px;
+        margin: 3rem auto 2rem;
+        line-height: 1.6;
+        animation: fadeInUp 1s ease-out 0.5s backwards;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(30px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      /* Polaroid Photo Cards */
+      .polaroid {
+        background: white;
+        padding: 15px 15px 80px 15px;
+        box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.2),
+          0 0 0 1px rgba(0, 0, 0, 0.1);
+        border-radius: 3px;
+        transform: rotate(var(--rotation, 0deg));
+        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative;
+        cursor: pointer;
+      }
+
+      .polaroid::after {
+        content: attr(data-caption);
+        position: absolute;
+        bottom: 15px;
+        left: 15px;
+        right: 15px;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-align: center;
+      }
+
+      .polaroid:hover {
+        transform: rotate(0deg) scale(1.05);
+        box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+        z-index: 10;
+      }
+
+      /* Work Cards - Crayon Drawing Style */
+      .work-card {
+        background: white;
+        border-radius: 30px;
+        padding: 2.5rem;
+        position: relative;
+        overflow: visible;
+        transition: all 0.4s ease;
+        border: 4px solid var(--charcoal);
+        clip-path: polygon(2% 0%, 98% 1%, 100% 99%, 1% 98%);
+        box-shadow:
+          8px 8px 0px rgba(0, 0, 0, 0.1),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+      }
+
+      .work-card::before {
+        content: "";
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 60px;
+        height: 60px;
+        background: var(--warm-orange);
+        border-radius: 50%;
+        border: 4px solid var(--charcoal);
+        box-shadow: 3px 3px 0px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        transform: scale(0);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      }
+
+      .work-card:hover::before {
+        opacity: 1;
+        transform: scale(1);
+      }
+
+      .work-card:hover {
+        transform: rotate(-2deg) translateY(-10px);
+        box-shadow:
+          12px 12px 0px rgba(0, 0, 0, 0.15),
+          inset 0 0 0 2px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Crayon Icon Style */
+      .crayon-icon {
+        font-size: 4rem;
+        display: inline-block;
+        animation: wiggle 3s ease-in-out infinite;
+        filter: drop-shadow(3px 3px 0px rgba(0, 0, 0, 0.2));
+      }
+
+      @keyframes wiggle {
+        0%,
+        100% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-10deg);
+        }
+        75% {
+          transform: rotate(10deg);
+        }
+      }
+
+      /* Stats Counter - Chalk Board Style */
+      .stats-board {
+        background: var(--charcoal);
+        border-radius: 20px;
+        padding: 3rem 2rem;
+        position: relative;
+        border: 8px solid #8b4513;
+        box-shadow:
+          inset 0 0 20px rgba(0, 0, 0, 0.5),
+          0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      .stats-board::before {
+        content: "";
+        position: absolute;
+        top: 10px;
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        border: 2px dashed rgba(255, 255, 255, 0.2);
+        pointer-events: none;
+      }
+
+      .chalk-text {
+        font-family: "Caveat", cursive;
+        color: white;
+        font-size: 4rem;
+        font-weight: 700;
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        position: relative;
+      }
+
+      .chalk-text::after {
+        content: "";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 100%;
+        height: 3px;
+        background: var(--gentle-yellow);
+        border-radius: 2px;
+      }
+
+      /* Sticky Notes */
+      .sticky-note {
+        background: linear-gradient(135deg, #feff9c 0%, #fff740 100%);
+        padding: 2rem;
+        position: relative;
+        box-shadow:
+          0 10px 20px rgba(0, 0, 0, 0.15),
+          inset 0 -3px 0 rgba(0, 0, 0, 0.1);
+        transform: rotate(var(--rotation, 0deg));
+        transition: all 0.3s ease;
+        border-radius: 0 0 20px 0;
+      }
+
+      .sticky-note::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 50px;
+        height: 50px;
+        background: linear-gradient(
+          135deg,
+          transparent 0%,
+          transparent 45%,
+          rgba(0, 0, 0, 0.1) 50%,
+          transparent 55%,
+          transparent 100%
+        );
+      }
+
+      .sticky-note:hover {
+        transform: rotate(0deg) scale(1.05);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.25);
+        z-index: 10;
+      }
+
+      /* Tape Effect */
+      .tape {
+        position: absolute;
+        width: 100px;
+        height: 40px;
+        background: rgba(255, 255, 255, 0.6);
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        transform: rotate(-5deg);
+        top: -20px;
+        left: 50%;
+        margin-left: -50px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+
+      /* Hand-drawn Divider */
+      .sketch-divider {
+        width: 80%;
+        height: 3px;
+        margin: 4rem auto;
+        background: none;
+        border: none;
+        position: relative;
+      }
+
+      .sketch-divider::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 2px;
+        background: var(--sketch-brown);
+        border-radius: 50%;
+        transform: scaleY(2);
+      }
+
+      .sketch-divider::after {
+        content: "❤️";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: var(--cream-paper);
+        padding: 0 1rem;
+        font-size: 2rem;
+      }
+
+      /* Quote Bubble - Comic Style */
+      .quote-bubble {
+        position: relative;
+        background: white;
+        border: 4px solid var(--charcoal);
+        border-radius: 30px;
+        padding: 3rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.8rem;
+        line-height: 1.6;
+        box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .quote-bubble::before {
+        content: "";
+        position: absolute;
+        bottom: -30px;
+        left: 50px;
+        width: 0;
+        height: 0;
+        border-left: 20px solid transparent;
+        border-right: 20px solid transparent;
+        border-top: 30px solid var(--charcoal);
+      }
+
+      .quote-bubble::after {
+        content: "";
+        position: absolute;
+        bottom: -24px;
+        left: 54px;
+        width: 0;
+        height: 0;
+        border-left: 16px solid transparent;
+        border-right: 16px solid transparent;
+        border-top: 26px solid white;
+      }
+
+      /* Footer - Scrapbook Style */
+      .footer {
+        background: var(--charcoal);
+        position: relative;
+        overflow: hidden;
+      }
+
+      .footer::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><path d="M0,50 Q25,40 50,50 T100,50" stroke="rgba(255,255,255,0.05)" fill="none" stroke-width="2"/></svg>');
+        opacity: 0.3;
+      }
+
+      /* Responsive */
+      @media (max-width: 768px) {
+        .hero-title {
+          font-size: 3rem;
+        }
+
+        .navbar {
+          padding: 1rem;
+        }
+
+        .work-card {
+          margin-bottom: 2rem;
+        }
+      }
+
+      /* Loading Animation */
+      @keyframes spin {
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .loading-heart {
+        display: inline-block;
+        animation: spin 2s linear infinite;
+      }
+
+      /* Modern Navbar Styles */
+      .modern-navbar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255, 245, 230, 0.98);
+        backdrop-filter: blur(10px);
+        padding: 1rem 0;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        border-bottom: 3px solid var(--sketch-brown);
+      }
+
+      .navbar-content {
+        max-width: 1400px;
+        margin: 0 auto;
+        padding: 0 2rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .navbar-logo {
+        font-family: "Pacifico", cursive;
+        font-size: 1.8rem;
+        color: var(--warm-orange);
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .navbar-logo:hover {
+        transform: scale(1.05);
+        color: var(--sketch-brown);
+      }
+
+      /* Desktop Menu */
+      .desktop-menu {
+        display: none;
+        gap: 2rem;
+        align-items: center;
+      }
+
+      @media (min-width: 1024px) {
+        .desktop-menu {
+          display: flex;
+        }
+      }
+
+      .menu-item {
+        position: relative;
+      }
+
+      .menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1.2rem;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: inline-block;
+        background: transparent;
+        border: 2px solid transparent;
+      }
+
+      .menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
+      }
+
+      /* Dropdown Container */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-toggle {
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 0.8rem;
+      }
+
+      .dropdown:hover .dropdown-arrow {
+        transform: rotate(180deg);
+      }
+
+      /* Dropdown Menu */
+      .dropdown-menu {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border: 3px solid var(--sketch-brown);
+        border-radius: 15px;
+        padding: 1rem 0;
+        min-width: 220px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(-10px);
+        transition: all 0.3s ease;
+        z-index: 100;
+      }
+
+      .dropdown:hover .dropdown-menu {
+        opacity: 1;
+        visibility: visible;
+        transform: translateY(5px);
+      }
+
+      .dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.8rem 1.5rem;
+        display: block;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .dropdown-item:hover {
+        background: linear-gradient(90deg, var(--warm-orange), transparent);
+        border-left-color: var(--warm-orange);
+        color: var(--charcoal);
+        padding-left: 2rem;
+      }
+
+      /* Donate Button */
+      .donate-btn {
+        background: var(--warm-orange);
+        color: white;
+        padding: 0.8rem 2rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 15px rgba(255, 127, 80, 0.3);
+        text-decoration: none;
+        display: inline-block;
+      }
+
+      .donate-btn:hover {
+        background: var(--sketch-brown);
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+      }
+
+      /* Mobile Menu Button */
+      .mobile-menu-btn {
+        display: block;
+        background: var(--warm-orange);
+        border: none;
+        padding: 0.6rem;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      @media (min-width: 1024px) {
+        .mobile-menu-btn {
+          display: none;
+        }
+      }
+
+      .mobile-menu-btn:hover {
+        background: var(--sketch-brown);
+        transform: scale(1.1);
+      }
+
+      .mobile-menu-btn svg {
+        width: 30px;
+        height: 30px;
+        color: white;
+      }
+
+      /* Mobile Sidebar Menu */
+      .mobile-sidebar {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 320px;
+        height: 100vh;
+        background: white;
+        box-shadow: -5px 0 30px rgba(0, 0, 0, 0.3);
+        transition: right 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        z-index: 9999;
+        overflow-y: auto;
+        border-left: 4px solid var(--sketch-brown);
+      }
+
+      .mobile-sidebar.active {
+        right: 0;
+      }
+
+      .mobile-close-btn {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: var(--warm-orange);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        color: white;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .mobile-close-btn:hover {
+        background: var(--sketch-brown);
+        transform: rotate(90deg);
+      }
+
+      .mobile-menu-content {
+        padding: 4rem 1.5rem 2rem;
+      }
+
+      .mobile-menu-item {
+        margin-bottom: 0.5rem;
+      }
+
+      .mobile-menu-link {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 1rem;
+        display: block;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        border: 2px solid transparent;
+      }
+
+      .mobile-menu-link:hover {
+        background: var(--warm-orange);
+        color: white;
+        border-color: var(--sketch-brown);
+        transform: translateX(10px);
+      }
+
+      /* Mobile Dropdown */
+      .mobile-dropdown-toggle {
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.3rem;
+        color: var(--charcoal);
+        background: transparent;
+        border: 2px solid transparent;
+        padding: 1rem;
+        width: 100%;
+        text-align: left;
+        cursor: pointer;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
+
+      .mobile-dropdown-toggle:hover {
+        background: rgba(255, 127, 80, 0.1);
+        border-color: var(--warm-orange);
+      }
+
+      .mobile-dropdown-arrow {
+        transition: transform 0.3s ease;
+        font-size: 1rem;
+      }
+
+      .mobile-dropdown-menu {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.4s ease;
+        padding-left: 1rem;
+      }
+
+      .mobile-dropdown-menu.active {
+        max-height: 500px;
+      }
+
+      .mobile-dropdown-item {
+        font-family: "Kalam", cursive;
+        font-size: 1.1rem;
+        color: var(--charcoal);
+        text-decoration: none;
+        padding: 0.7rem 1rem;
+        display: block;
+        border-radius: 8px;
+        transition: all 0.3s ease;
+        border-left: 3px solid transparent;
+      }
+
+      .mobile-dropdown-item:hover {
+        background: rgba(255, 127, 80, 0.2);
+        border-left-color: var(--warm-orange);
+        padding-left: 1.5rem;
+      }
+
+      /* Overlay */
+      .mobile-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100vh;
+        background: rgba(0, 0, 0, 0.5);
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.3s ease;
+        z-index: 9998;
+      }
+
+      .mobile-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Body padding for fixed navbar */
+      body {
+        padding-top: 80px;
+      }
+
+      /* Event Popup Overlay */
+      .event-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(5px);
+        z-index: 10000;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        visibility: hidden;
+        transition: all 0.4s ease;
+        padding: 1rem;
+      }
+
+      .event-overlay.active {
+        opacity: 1;
+        visibility: visible;
+      }
+
+      /* Event Popup Container */
+      .event-popup {
+        background: white;
+        border: 6px solid var(--sketch-brown);
+        border-radius: 30px;
+        max-width: 600px;
+        width: 100%;
+        max-height: 85vh;
+        overflow-y: auto;
+        position: relative;
+        transform: scale(0.8) rotate(-5deg);
+        transition: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        box-shadow:
+          15px 15px 0px rgba(0, 0, 0, 0.2),
+          inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+        animation: popupEntrance 0.6s ease-out forwards;
+      }
+
+      .event-overlay.active .event-popup {
+        transform: scale(1) rotate(0deg);
+      }
+
+      @keyframes popupEntrance {
+        0% {
+          transform: scale(0) rotate(-180deg);
+          opacity: 0;
+        }
+        50% {
+          transform: scale(1.1) rotate(10deg);
+        }
+        100% {
+          transform: scale(1) rotate(0deg);
+          opacity: 1;
+        }
+      }
+
+      /* Close Button */
+      .event-close {
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        width: 50px;
+        height: 50px;
+        background: var(--heart-red);
+        border: 4px solid white;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.8rem;
+        font-weight: bold;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(220, 20, 60, 0.4);
+        z-index: 10;
+      }
+
+      .event-close:hover {
+        background: var(--sketch-brown);
+        transform: rotate(90deg) scale(1.1);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.5);
+      }
+
+      /* Event Header */
+      .event-header {
+        background: linear-gradient(
+          135deg,
+          var(--warm-orange),
+          var(--gentle-yellow)
+        );
+        padding: 2rem 2rem 1.5rem;
+        border-radius: 24px 24px 0 0;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .event-header::before {
+        content: "🎉";
+        position: absolute;
+        font-size: 8rem;
+        opacity: 0.15;
+        top: -20px;
+        right: -20px;
+        animation: rotateSlow 20s linear infinite;
+      }
+
+      @keyframes rotateSlow {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      .event-badge {
+        display: inline-block;
+        background: var(--heart-red);
+        color: white;
+        padding: 0.5rem 1.5rem;
+        border-radius: 20px;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        animation: pulse 2s ease-in-out infinite;
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.05);
+        }
+      }
+
+      .event-title {
+        font-family: "Caveat", cursive;
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: var(--charcoal);
+        margin: 0.5rem 0;
+        line-height: 1.2;
+        text-shadow: 2px 2px 0px rgba(255, 255, 255, 0.5);
+      }
+
+      /* Event Content */
+      .event-content {
+        padding: 2rem;
+      }
+
+      .event-image-wrapper {
+        position: relative;
+        margin-bottom: 1.5rem;
+        border-radius: 20px;
+        overflow: hidden;
+        border: 4px solid var(--sketch-brown);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transform: rotate(-2deg);
+        transition: transform 0.3s ease;
+      }
+
+      .event-image-wrapper:hover {
+        transform: rotate(0deg) scale(1.02);
+      }
+
+      .event-image {
+        width: 100%;
+        height: auto;
+        display: block;
+      }
+
+      .event-description {
+        font-family: "Kalam", cursive;
+        font-size: 1.2rem;
+        line-height: 1.8;
+        color: var(--charcoal);
+        margin-bottom: 1.5rem;
+        padding: 1.5rem;
+        background: #fff5e6;
+        border-left: 5px solid var(--warm-orange);
+        border-radius: 10px;
+      }
+
+      /* Event Details */
+      .event-details {
+        display: grid;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .event-detail-item {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background: white;
+        border: 3px solid var(--sketch-brown);
+        border-radius: 15px;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.1rem;
+        transition: all 0.3s ease;
+      }
+
+      .event-detail-item:hover {
+        transform: translateX(10px);
+        box-shadow: 5px 5px 0px rgba(0, 0, 0, 0.1);
+      }
+
+      .event-icon {
+        font-size: 2rem;
+        flex-shrink: 0;
+      }
+
+      /* CTA Buttons */
+      .event-buttons {
+        display: flex;
+        gap: 1rem;
+        flex-wrap: wrap;
+      }
+
+      .event-btn {
+        flex: 1;
+        min-width: 150px;
+        padding: 1rem 2rem;
+        font-family: "Patrick Hand", cursive;
+        font-size: 1.2rem;
+        font-weight: bold;
+        border: none;
+        border-radius: 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+      }
+
+      .event-btn-primary {
+        background: var(--warm-orange);
+        color: white;
+        box-shadow: 0 5px 15px rgba(255, 127, 80, 0.3);
+      }
+
+      .event-btn-primary:hover {
+        background: var(--sketch-brown);
+        transform: translateY(-3px);
+        box-shadow: 0 8px 25px rgba(139, 69, 19, 0.4);
+      }
+
+      .event-btn-secondary {
+        background: transparent;
+        color: var(--charcoal);
+        border: 3px solid var(--charcoal);
+      }
+
+      .event-btn-secondary:hover {
+        background: var(--charcoal);
+        color: white;
+        transform: translateY(-3px);
+      }
+
+      /* Multiple Events Slider */
+      .events-slider {
+        position: relative;
+      }
+
+      .event-slide {
+        display: none;
+      }
+
+      .event-slide.active {
+        display: block;
+        animation: slideIn 0.5s ease-out;
+      }
+
+      @keyframes slideIn {
+        from {
+          opacity: 0;
+          transform: translateX(50px);
+        }
+        to {
+          opacity: 1;
+          transform: translateX(0);
+        }
+      }
+
+      .event-navigation {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+        margin-top: 1.5rem;
+        padding-top: 1.5rem;
+        border-top: 3px dashed var(--sketch-brown);
+      }
+
+      .event-nav-btn {
+        background: var(--warm-orange);
+        border: none;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        color: white;
+        font-size: 1.2rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+      }
+
+      .event-nav-btn:hover {
+        background: var(--sketch-brown);
+        transform: scale(1.1);
+      }
+
+      .event-nav-btn:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
+      }
+
+      .event-indicators {
+        display: flex;
+        gap: 0.5rem;
+      }
+
+      .event-indicator {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        background: rgba(139, 69, 19, 0.3);
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .event-indicator.active {
+        background: var(--warm-orange);
+        transform: scale(1.3);
+      }
+
+      /* Responsive */
+      @media (max-width: 640px) {
+        .event-popup {
+          margin: 1rem;
+          max-height: 90vh;
+        }
+
+        .event-title {
+          font-size: 2rem;
+        }
+
+        .event-buttons {
+          flex-direction: column;
+        }
+
+        .event-btn {
+          width: 100%;
+        }
+      }
+
+      /* Scrollbar for popup */
+      .event-popup::-webkit-scrollbar {
+        width: 8px;
+      }
+
+      .event-popup::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 10px;
+      }
+
+      .event-popup::-webkit-scrollbar-thumb {
+        background: var(--warm-orange);
+        border-radius: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Event Popup HTML -->
+    <div class="event-overlay" id="eventOverlay">
+      <div class="event-popup">
+        <button class="event-close" onclick="closeEventPopup()">×</button>
+
+        <div class="events-slider" id="eventsSlider">
+          <!-- Events will be dynamically inserted here -->
+        </div>
+      </div>
+    </div>
+
+    <!-- Animated Sketch Background -->
+    <div class="sketch-background">
+      <!-- SVG Sketch Elements will be generated via JS -->
+    </div>
+
+    <!-- Falling Hearts -->
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+    <div class="heart">❤️</div>
+
+    <!-- Navbar - Sticky Note Style -->
+    <nav class="modern-navbar">
+      <div class="navbar-content">
+        <!-- Logo -->
+        <a href="index.html" class="navbar-logo">Mission Needy People ✨</a>
+
+        <!-- Desktop Menu -->
+        <div class="desktop-menu">
+          <div class="menu-item">
+            <a href="index.html" class="menu-link">Home</a>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              About Us <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="vision.html" class="dropdown-item"
+                > Vision & Mission</a
+              >
+              <a href="ourmentors.html" class="dropdown-item"> Our Mentors</a>
+              <a href="working.html" class="dropdown-item"> Working Model</a>
+              <a href="reach.html" class="dropdown-item"> Reach & Presence</a>
+              <a href="gallery.html" class="dropdown-item"> Gallery</a>
+            </div>
+          </div>
+
+          <div class="menu-item dropdown">
+            <a class="menu-link dropdown-toggle">
+              Our Work <span class="dropdown-arrow">▼</span>
+            </a>
+            <div class="dropdown-menu">
+              <a href="overview.html" class="dropdown-item"> Overview</a>
+              <a href="health.html" class="dropdown-item"> Health</a>
+              <a href="education.html" class="dropdown-item"> Education</a>
+              <a href="food.html" class="dropdown-item"> Food</a>
+              <a href="clothes.html" class="dropdown-item"> Clothes</a>
+              <a href="drinkingwater.html" class="dropdown-item"
+                > Drinking Water</a
+              >
+            </div>
+          </div>
+
+          <div class="menu-item">
+            <a href="contactus.html" class="menu-link">Contact</a>
+          </div>
+
+          <a href="donate.html" class="donate-btn">Donate ❤️</a>
+        </div>
+
+        <!-- Mobile Menu Button -->
+        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2.5"
+              d="M4 6h16M4 12h16M4 18h16"
+            />
+          </svg>
+        </button>
+      </div>
+    </nav>
+
+    <!-- Mobile Sidebar Menu -->
+    <div class="mobile-sidebar" id="mobileSidebar">
+      <button class="mobile-close-btn" onclick="toggleMobileMenu()">×</button>
+
+      <div class="mobile-menu-content">
+        <div class="mobile-menu-item">
+          <a href="index.html" class="mobile-menu-link"> Home</a>
+        </div>
+
+        <!-- About Us Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('aboutDropdown')"
+          >
+            <span> About Us</span>
+            <span class="mobile-dropdown-arrow" id="aboutArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="aboutDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="vision.html" class="mobile-dropdown-item"
+              > Vision & Mission</a
+            >
+            <a href="ourmentors.html" class="mobile-dropdown-item"
+              > Our Mentors</a
+            >
+            <a href="working.html" class="mobile-dropdown-item"
+              > Working Model</a
+            >
+            <a href="reach.html" class="mobile-dropdown-item"
+              > Reach & Presence</a
+            >
+            <a href="gallery.html" class="mobile-dropdown-item"> Gallery</a>
+          </div>
+        </div>
+
+        <!-- Our Work Dropdown -->
+        <div class="mobile-menu-item">
+          <button
+            class="mobile-dropdown-toggle"
+            onclick="toggleMobileDropdown('workDropdown')"
+          >
+            <span> Our Work</span>
+            <span class="mobile-dropdown-arrow" id="workArrow">▼</span>
+          </button>
+          <div class="mobile-dropdown-menu" id="workDropdown">
+            <a href="overview.html" class="mobile-dropdown-item"> Overview</a>
+            <a href="health.html" class="mobile-dropdown-item"> Health</a>
+            <a href="education.html" class="mobile-dropdown-item"
+              > Education</a
+            >
+            <a href="food.html" class="mobile-dropdown-item"> Food</a>
+            <a href="clothes.html" class="mobile-dropdown-item"> Clothes</a>
+            <a href="drinkingwater.html" class="mobile-dropdown-item"
+              > Drinking Water</a
+            >
+          </div>
+        </div>
+
+        <div class="mobile-menu-item">
+          <a href="contactus.html" class="mobile-menu-link"> Contact</a>
+        </div>
+
+        <div class="mobile-menu-item" style="margin-top: 2rem">
+          <a
+            href="donate.html"
+            class="donate-btn"
+            style="width: 100%; text-align: center; display: block"
+            >Donate Now ❤️</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <!-- Mobile Overlay -->
+    <div
+      class="mobile-overlay"
+      id="mobileOverlay"
+      onclick="toggleMobileMenu()"
+    ></div>
+
+    <!-- Hero Section -->
+    <section class="hero-section">
+      <div class="container mx-auto px-6 relative z-10">
+        <h1 class="hero-title">
+          हर ज़रूरतमंद की<br />
+          मुस्कान हमारा सपना ✨
+        </h1>
+        <p class="hero-subtitle">
+          Every smile we bring, every life we touch, every hand we hold - this
+          is our purpose. Join us in spreading hope, love, and humanity.
+        </p>
+
+        <div class="flex flex-wrap justify-center gap-6 mt-12">
+          <a href="donate.html">
+            <button class="sketch-btn">
+              <i class="fas fa-hand-holding-heart text-4xl"></i> Start Donating
+            </button>
+          </a>
+          <a href="aboutus.html">
+            <button class="sketch-btn sketch-btn-outline">
+              <i class="fas fa-box text-4xl"></i> Our Story
+            </button>
+          </a>
+        </div>
+
+        <!-- Polaroid Photos Grid -->
+        <div class="grid md:grid-cols-3 gap-8 mt-20 max-w-6xl mx-auto">
+          <div
+            class="polaroid"
+            data-caption="Feeding Hope "
+            style="--rotation: -3deg"
+          >
+            <img
+              src="image/help1.jpg"
+              alt="Feeding the hungry"
+              class="w-full rounded"
+            />
+          </div>
+          <div
+            class="polaroid"
+            data-caption="Clothing Care "
+            style="--rotation: 2deg"
+          >
+            <img
+              src="image/clothes6.jpg"
+              alt="Distributing clothes"
+              class="w-full rounded"
+            />
+          </div>
+          <div
+            class="polaroid"
+            data-caption="Health Support"
+            style="--rotation: -2deg"
+          >
+            <img
+              src="image/ph9.jpg"
+              alt="Medical care"
+              class="w-full rounded"
+            />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Stats Section - Chalkboard -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="stats-board max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-4 gap-8 text-center">
+            <div>
+              <div class="chalk-text">200+</div>
+              <p
+                class="text-white text-xl mt-2"
+                style="font-family: &quot;Architects Daughter&quot;, cursive"
+              >
+                Team Members
+              </p>
+            </div>
+            <div>
+              <div class="chalk-text">2</div>
+              <p
+                class="text-white text-xl mt-2"
+                style="font-family: &quot;Architects Daughter&quot;, cursive"
+              >
+                States (UP & MP)
+              </p>
+            </div>
+            <div>
+              <div class="chalk-text">5</div>
+              <p
+                class="text-white text-xl mt-2"
+                style="font-family: &quot;Architects Daughter&quot;, cursive"
+              >
+                Mission Areas
+              </p>
+            </div>
+            <div>
+              <div class="chalk-text">∞</div>
+              <p
+                class="text-white text-xl mt-2"
+                style="font-family: &quot;Architects Daughter&quot;, cursive"
+              >
+                Lives Changed
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Hand-drawn Divider -->
+    <div class="sketch-divider"></div>
+
+    <!-- Our Work - Crayon Cards -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-center text-6xl mb-4"
+          style="
+            font-family: &quot;Caveat&quot;, cursive;
+            font-weight: 700;
+            color: var(--charcoal);
+          "
+        >
+          हमारे काम के क्षेत्र
+        </h2>
+        <p
+          class="text-center text-2xl mb-16"
+          style="
+            font-family: &quot;Architects Daughter&quot;, cursive;
+            color: #666;
+          "
+        >
+          Five pillars of hope, dignity & compassion
+        </p>
+
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+          <div class="work-card">
+            <div class="crayon-icon">
+              <i class="fas fa-hospital text-4xl"></i>
+            </div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Health Care
+            </h3>
+            <p
+              class="text-lg"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              Medical camps, medicines, health checkups for those who can't
+              afford basic healthcare. Because health is wealth!
+            </p>
+            <a
+              href="health.html"
+              class="inline-block mt-4 text-orange-600 font-bold text-lg hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+
+          <div class="work-card">
+            <div class="crayon-icon"><i class="fas fa-book text-4xl"></i></div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Education
+            </h3>
+            <p
+              class="text-lg"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              Books, stationery, scholarships. Empowering young minds to dream
+              big and achieve bigger!
+            </p>
+            <a
+              href="education.html"
+              class="inline-block mt-4 text-orange-600 font-bold text-lg hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+
+          <div class="work-card">
+            <div class="crayon-icon">
+              <i class="fas fa-utensils text-4xl"></i>
+            </div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Food Distribution
+            </h3>
+            <p
+              class="text-lg"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              No one should sleep hungry. Hot meals, food packets, and nutrition
+              for the needy.
+            </p>
+            <a
+              href="food.html"
+              class="inline-block mt-4 text-orange-600 font-bold text-lg hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+
+          <div class="work-card">
+            <div class="crayon-icon">
+              <i class="fas fa-tshirt text-4xl"></i>
+            </div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Clothing Drive
+            </h3>
+            <p
+              class="text-lg"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              Collecting & distributing clothes. Dignity matters, warmth
+              matters, care matters.
+            </p>
+            <a
+              href="clothes.html"
+              class="inline-block mt-4 text-orange-600 font-bold text-lg hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+
+          <div class="work-card">
+            <div class="crayon-icon">
+              <i class="fas fa-droplet text-4xl"></i>
+            </div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Clean Water
+            </h3>
+            <p
+              class="text-lg"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              Safe drinking water is a right, not a privilege. Water purifiers &
+              distribution drives.
+            </p>
+            <a
+              href="drinkingwater.html"
+              class="inline-block mt-4 text-orange-600 font-bold text-lg hover:underline"
+            >
+              Read More →
+            </a>
+          </div>
+
+          <div
+            class="work-card"
+            style="
+              background: linear-gradient(135deg, #ff7f50, #ffd700);
+              border-color: #8b4513;
+            "
+          >
+            <div class="crayon-icon" style="color: white">❤️</div>
+            <h3
+              class="text-3xl font-bold mb-3 mt-4 text-white"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Join Us!
+            </h3>
+            <p
+              class="text-lg text-white"
+              style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+            >
+              Your contribution can change lives. Be the hope someone is looking
+              for!
+            </p>
+            <a href="donate.html">
+              <button
+                class="mt-4 bg-white text-orange-600 px-8 py-3 rounded-full font-bold hover:bg-gray-100 transition"
+                style="
+                  font-family: &quot;Patrick Hand&quot;, cursive;
+                  font-size: 1.2rem;
+                "
+              >
+                Donate Now →
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Team - Sticky Notes -->
+    <section
+      class="py-20"
+      style="
+        background: linear-gradient(
+          180deg,
+          transparent 0%,
+          rgba(255, 245, 230, 0.5) 100%
+        );
+      "
+    >
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-center text-6xl mb-16"
+          style="font-family: &quot;Caveat&quot;, cursive; font-weight: 700"
+        >
+          Our Beautiful Mission 🌟
+        </h2>
+
+        <div class="grid md:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div class="sticky-note" style="--rotation: -4deg">
+            <div class="tape"></div>
+            <div class="text-5xl mb-4"><i class="fas fa-people-group"></i></div>
+            <h3
+              class="text-2xl font-bold mb-3"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              200+ Team Members
+            </h3>
+            <p class="text-lg" style="font-family: &quot;Kalam&quot;, cursive">
+              Volunteers across UP & MP working tirelessly to serve humanity
+              with love and dedication.
+            </p>
+          </div>
+
+          <div
+            class="sticky-note"
+            style="
+              --rotation: 3deg;
+              background: linear-gradient(135deg, #ffd3e1 0%, #ffaec9 100%);
+            "
+          >
+            <div class="tape"></div>
+            <div class="text-5xl mb-4">
+              <i class="fas fa-hand-holding-dollar text-5xl"></i>
+            </div>
+            <h3
+              class="text-2xl font-bold mb-3"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Transparent Funding
+            </h3>
+            <p class="text-lg" style="font-family: &quot;Kalam&quot;, cursive">
+              Donations from ₹5 to ₹1 Lakh, all managed with complete
+              transparency and accountability.
+            </p>
+          </div>
+
+          <div
+            class="sticky-note"
+            style="
+              --rotation: -2deg;
+              background: linear-gradient(135deg, #c7ecee 0%, #7dd3c0 100%);
+            "
+          >
+            <div class="tape"></div>
+            <div class="text-5xl mb-4"><i class="fas fa-chart-line"></i></div>
+            <h3
+              class="text-2xl font-bold mb-3"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Fund Management
+            </h3>
+            <p class="text-lg" style="font-family: &quot;Kalam&quot;, cursive">
+              Managed by Shivam Gupta, Ravi Raj & team head Harsh Sharma with
+              full accountability.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder Story - Comic Bubble -->
+    <section class="py-20">
+      <div class="container mx-auto px-6">
+        <div class="max-w-5xl mx-auto">
+          <div class="grid md:grid-cols-2 gap-12 items-center">
+            <div
+              class="polaroid"
+              style="--rotation: -5deg"
+              data-caption="Shivam Gupta - Founder"
+            >
+              <img
+                src="image/passport.png"
+                alt="Shivam Gupta"
+                class="w-full rounded"
+              />
+            </div>
+
+            <div>
+              <h2
+                class="text-5xl mb-6"
+                style="
+                  font-family: &quot;Caveat&quot;, cursive;
+                  font-weight: 700;
+                  color: var(--charcoal);
+                "
+              >
+                मिलिए हमसे!
+              </h2>
+              <div class="quote-bubble">
+                "It is my dream to fulfill every poor person's dream. I feel
+                pure happiness helping those in need. This mission is my
+                purpose, my calling."
+              </div>
+              <p
+                class="mt-8 text-2xl"
+                style="
+                  font-family: &quot;Patrick Hand&quot;, cursive;
+                  font-weight: bold;
+                "
+              >
+                — Shivam Gupta, Founder
+              </p>
+              <div
+                class="mt-6 p-6 bg-orange-100 border-4 border-orange-500 rounded-3xl"
+              >
+                <p
+                  class="text-xl italic"
+                  style="font-family: &quot;Kalam&quot;, cursive"
+                >
+                  "No one will support you in life, so believe in yourself and
+                  keep moving forward."
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Social Media - Scrapbook Style -->
+    <section class="py-20" style="background: var(--cream-paper)">
+      <div class="container mx-auto px-6">
+        <h2
+          class="text-center text-6xl mb-4"
+          style="font-family: &quot;Caveat&quot;, cursive; font-weight: 700"
+        >
+          हमसे जुड़ें <i class="fas fa-phone text-xl"></i>
+        </h2>
+        <p
+          class="text-center text-2xl mb-16"
+          style="
+            font-family: &quot;Architects Daughter&quot;, cursive;
+            color: #666;
+          "
+        >
+          Follow our journey of spreading love & hope
+        </p>
+
+        <div class="grid md:grid-cols-2 gap-12 max-w-5xl mx-auto">
+          <div
+            class="bg-white p-6 rounded-3xl border-4 border-charcoal shadow-lg"
+            style="clip-path: polygon(2% 0%, 98% 1%, 99% 98%, 1% 99%)"
+          >
+            <div class="relative">
+              <video
+                src="image/you tube.mp4"
+                controls
+                class="w-full rounded-2xl"
+              ></video>
+              <div
+                class="absolute -top-4 -right-4 bg-red-600 text-white px-6 py-2 rounded-full transform rotate-12 shadow-lg"
+                style="
+                  font-family: &quot;Patrick Hand&quot;, cursive;
+                  font-size: 1.2rem;
+                "
+              >
+                <i class="fas fa-video text-xl"></i> YouTube
+              </div>
+            </div>
+            <a
+              href="https://youtube.com/@MNP2560"
+              class="block mt-6 text-center"
+            >
+              <button class="sketch-btn" style="background: #ff0000">
+                Visit Channel <i class="fas fa-video text-xl"></i>
+              </button>
+            </a>
+          </div>
+
+          <div
+            class="bg-white p-6 rounded-3xl border-4 border-charcoal shadow-lg"
+            style="clip-path: polygon(2% 0%, 98% 1%, 99% 98%, 1% 99%)"
+          >
+            <div class="relative">
+              <video
+                src="image/insta.mp4"
+                controls
+                class="w-full rounded-2xl"
+              ></video>
+              <div
+                class="absolute -top-4 -right-4 px-6 py-2 rounded-full transform rotate-12 shadow-lg"
+                style="
+                  font-family: &quot;Patrick Hand&quot;, cursive;
+                  font-size: 1.2rem;
+                  background: linear-gradient(
+                    45deg,
+                    #f09433 0%,
+                    #e6683c 25%,
+                    #dc2743 50%,
+                    #cc2366 75%,
+                    #bc1888 100%
+                  );
+                  color: white;
+                "
+              >
+                <i class="fas fa-image text-xl"></i> Insta
+              </div>
+            </div>
+            <a
+              href="https://instagram.com/mnp2560?igshid=ZDdkNTZiNTM="
+              class="block mt-6 text-center"
+            >
+              <button
+                class="sketch-btn"
+                style="
+                  background: linear-gradient(
+                    45deg,
+                    #f09433 0%,
+                    #e6683c 25%,
+                    #dc2743 50%,
+                    #cc2366 75%,
+                    #bc1888 100%
+                  );
+                "
+              >
+                Follow Us <i class="fas fa-image text-xl"></i>
+              </button>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA - Hand-drawn Banner -->
+    <section
+      class="py-20"
+      style="
+        background: linear-gradient(
+          135deg,
+          var(--warm-orange),
+          var(--gentle-yellow)
+        );
+      "
+    >
+      <div class="container mx-auto px-6 text-center">
+        <div
+          class="max-w-4xl mx-auto bg-white p-12 rounded-3xl border-8 border-charcoal shadow-2xl"
+          style="clip-path: polygon(2% 0%, 98% 2%, 100% 98%, 0% 100%)"
+        >
+          <h2
+            class="text-6xl mb-6"
+            style="
+              font-family: &quot;Caveat&quot;, cursive;
+              font-weight: 700;
+              color: var(--charcoal);
+            "
+          >
+            एक छोटा कदम,<br />
+            बड़ा बदलाव! ✨
+          </h2>
+          <p
+            class="text-2xl mb-8"
+            style="font-family: &quot;Kalam&quot;, cursive; line-height: 1.8"
+          >
+            Your small contribution can bring BIG smiles!<br />
+            Join our mission of love, hope & humanity today.
+          </p>
+          <a href="donate.html">
+            <button class="sketch-btn text-2xl px-12 py-4">
+              <i class="fas fa-hands-helping text-4xl"></i> Donate Now - Daan
+              Patra
+            </button>
+          </a>
+
+          <div class="mt-8 flex justify-center gap-4 flex-wrap">
+            <span
+              class="px-4 py-2 bg-yellow-200 rounded-full border-2 border-charcoal"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+              >₹5+</span
+            >
+            <span
+              class="px-4 py-2 bg-pink-200 rounded-full border-2 border-charcoal"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+              >Every Rupee Counts</span
+            >
+            <span
+              class="px-4 py-2 bg-blue-200 rounded-full border-2 border-charcoal"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+              >100% Transparent</span
+            >
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Footer - Scrapbook -->
+    <footer class="footer py-16 relative">
+      <div class="container mx-auto px-6 relative z-10">
+        <div class="grid md:grid-cols-4 gap-8 mb-12">
+          <div>
+            <h3
+              class="text-3xl mb-6"
+              style="
+                font-family: &quot;Pacifico&quot;, cursive;
+                color: var(--warm-orange);
+              "
+            >
+              Mission Needy People
+            </h3>
+            <p
+              class="text-gray-300 mb-4"
+              style="font-family: &quot;Kalam&quot;, cursive; font-size: 1.1rem"
+            >
+              Spreading love, hope & humanity across India. One smile at a time.
+            </p>
+            <div
+              class="space-y-2 text-gray-300"
+              style="
+                font-family: &quot;Patrick Hand&quot;, cursive;
+                font-size: 1.1rem;
+              "
+            >
+              <p><i class="fas fa-phone text-xl"></i> +91-8602507957</p>
+              <p><i class="fas fa-phone text-xl"></i> +91-9340413954</p>
+              <p><i class="fas fa-phone text-xl"></i> +91-9425634860</p>
+            </div>
+          </div>
+
+          <div>
+            <h4
+              class="text-2xl mb-4 text-white"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              About
+            </h4>
+            <ul
+              class="space-y-2"
+              style="font-family: &quot;Kalam&quot;, cursive"
+            >
+              <li>
+                <a
+                  href="overview.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Overview</a
+                >
+              </li>
+              <li>
+                <a
+                  href="vision.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Vision & Mission</a
+                >
+              </li>
+              <li>
+                <a
+                  href="ourmentors.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Our Mentors</a
+                >
+              </li>
+              <li>
+                <a
+                  href="working.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Working Model</a
+                >
+              </li>
+              <li>
+                <a
+                  href="reach.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Reach & Presence</a
+                >
+              </li>
+              <li>
+                <a
+                  href="gallery.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  >Gallery</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-2xl mb-4 text-white"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Our Work
+            </h4>
+            <ul
+              class="space-y-2"
+              style="font-family: &quot;Kalam&quot;, cursive"
+            >
+              <li>
+                <a
+                  href="health.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Health</a
+                >
+              </li>
+              <li>
+                <a
+                  href="education.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Education</a
+                >
+              </li>
+              <li>
+                <a
+                  href="food.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Food</a
+                >
+              </li>
+              <li>
+                <a
+                  href="clothes.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Clothes</a
+                >
+              </li>
+              <li>
+                <a
+                  href="drinkingwater.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Water</a
+                >
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h4
+              class="text-2xl mb-4 text-white"
+              style="font-family: &quot;Patrick Hand&quot;, cursive"
+            >
+              Quick Links
+            </h4>
+            <ul
+              class="space-y-2"
+              style="font-family: &quot;Kalam&quot;, cursive"
+            >
+              <li>
+                <a
+                  href="donate.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Donate</a
+                >
+              </li>
+              <li>
+                <a
+                  href="aboutus.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > About Us</a
+                >
+              </li>
+              <li>
+                <a
+                  href="contactus.html"
+                  class="text-gray-300 hover:text-orange-400 transition"
+                  > Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t-4 border-dashed border-gray-600 pt-8 text-center">
+          <p
+            class="text-gray-400 text-lg"
+            style="font-family: &quot;Kalam&quot;, cursive"
+          >
+            © 2026 Mission Needy People. Made with ❤️ for humanity.
+          </p>
+          <p
+            class="text-gray-500 mt-2"
+            style="font-family: &quot;Patrick Hand&quot;, cursive"
+          >
+            "No one will support you in life, so believe in yourself and keep
+            moving forward." - Shivam Gupta
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      // Toggle Mobile Menu
+      function toggleMobileMenu() {
+        const sidebar = document.getElementById("mobileSidebar");
+        const overlay = document.getElementById("mobileOverlay");
+
+        sidebar.classList.toggle("active");
+        overlay.classList.toggle("active");
+
+        // Prevent body scroll when menu is open
+        if (sidebar.classList.contains("active")) {
+          document.body.style.overflow = "hidden";
+        } else {
+          document.body.style.overflow = "";
+        }
+      }
+
+      // Toggle Mobile Dropdown
+      function toggleMobileDropdown(id) {
+        const dropdown = document.getElementById(id);
+        const arrow = document.getElementById(id.replace("Dropdown", "Arrow"));
+
+        dropdown.classList.toggle("active");
+
+        if (dropdown.classList.contains("active")) {
+          arrow.style.transform = "rotate(180deg)";
+        } else {
+          arrow.style.transform = "rotate(0deg)";
+        }
+      }
+
+      // Close mobile menu on link click
+      document
+        .querySelectorAll(".mobile-dropdown-item, .mobile-menu-link")
+        .forEach((link) => {
+          link.addEventListener("click", () => {
+            toggleMobileMenu();
+          });
+        });
+
+      // Navbar scroll effect
+      let lastScroll = 0;
+      window.addEventListener("scroll", () => {
+        const navbar = document.querySelector(".modern-navbar");
+        const currentScroll = window.pageYOffset;
+
+        if (currentScroll > 100) {
+          navbar.style.boxShadow = "0 4px 30px rgba(0,0,0,0.2)";
+        } else {
+          navbar.style.boxShadow = "0 4px 20px rgba(0,0,0,0.1)";
+        }
+
+        lastScroll = currentScroll;
+      });
+    </script>
+
+    <script>
+      // Mobile Menu Toggle
+      function toggleMenu() {
+        const menu = document.getElementById("mobileMenu");
+        menu.classList.toggle("translate-x-full");
+      }
+
+      // Close menu on click outside
+      document.addEventListener("click", function (e) {
+        const menu = document.getElementById("mobileMenu");
+        const menuButton = e.target.closest("button");
+        if (
+          !menu.contains(e.target) &&
+          !menuButton &&
+          !menu.classList.contains("translate-x-full")
+        ) {
+          menu.classList.add("translate-x-full");
+        }
+      });
+
+      // Generate Sketch Background Elements
+      function createSketchBackground() {
+        const background = document.querySelector(".sketch-background");
+        const sketches = [
+          // Children sketches
+          `<svg class="sketch-element" style="top: 10%; left: 5%; width: 100px;" viewBox="0 0 100 100">
+                    <path d="M50,30 Q45,35 50,40 Q55,35 50,30 M40,50 Q40,60 50,70 Q60,60 60,50 M30,60 L20,80 M70,60 L80,80" 
+                    stroke="#8B4513" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>`,
+          // Heart
+          `<svg class="sketch-element" style="top: 20%; right: 10%; width: 80px;" viewBox="0 0 100 100">
+                    <path d="M50,75 Q30,55 30,40 Q30,25 40,25 Q50,25 50,35 Q50,25 60,25 Q70,25 70,40 Q70,55 50,75" 
+                    stroke="#DC143C" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>`,
+          // Food bowl
+          `<svg class="sketch-element" style="top: 50%; left: 15%; width: 90px;" viewBox="0 0 100 100">
+                    <ellipse cx="50" cy="60" rx="30" ry="15" stroke="#FF7F50" stroke-width="2" fill="none"/>
+                    <path d="M20,60 Q20,45 50,45 Q80,45 80,60" stroke="#FF7F50" stroke-width="2" fill="none"/>
+                </svg>`,
+          // Book
+          `<svg class="sketch-element" style="bottom: 20%; right: 20%; width: 85px;" viewBox="0 0 100 100">
+                    <rect x="25" y="30" width="50" height="40" stroke="#4169E1" stroke-width="2" fill="none" stroke-linecap="round"/>
+                    <line x1="50" y1="30" x2="50" y2="70" stroke="#4169E1" stroke-width="2"/>
+                </svg>`,
+          // Helping hands
+          `<svg class="sketch-element" style="bottom: 30%; left: 8%; width: 95px;" viewBox="0 0 100 100">
+                    <path d="M30,60 L35,45 M35,60 L40,40 M40,60 L45,42 M45,60 L50,45 M30,60 Q25,65 30,70 L50,70 Q55,65 50,60" 
+                    stroke="#FFD700" stroke-width="2" fill="none" stroke-linecap="round"/>
+                </svg>`,
+        ];
+
+        background.innerHTML = sketches.join("");
+      }
+
+      createSketchBackground();
+
+      // Smooth scroll
+      document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+        anchor.addEventListener("click", function (e) {
+          e.preventDefault();
+          const target = document.querySelector(this.getAttribute("href"));
+          if (target) {
+            target.scrollIntoView({ behavior: "smooth" });
+          }
+        });
+      });
+
+      // Navbar shadow on scroll
+      window.addEventListener("scroll", function () {
+        const navbar = document.querySelector(".navbar");
+        if (window.scrollY > 50) {
+          navbar.style.boxShadow = "0 15px 40px rgba(0,0,0,0.2)";
+        } else {
+          navbar.style.boxShadow = "0 10px 30px rgba(0,0,0,0.15)";
+        }
+      });
+    </script>
+
+    <script>
+      // ========================
+      // EVENT DATA CONFIGURATION
+      // ========================
+      const eventsData = [
+        {
+          id: 1,
+          badge: " UPCOMING EVENT",
+          title: "बड़ा भोजन वितरण कार्यक्रम",
+          image: "image/help1.jpg", // Apni image path yahan daalein
+          description:
+            "इस शुक्रवार को हम 500+ जरूरतमंद लोगों को गर्म भोजन वितरित करेंगे। आपकी छोटी सी मदद से हम और ज्यादा लोगों तक पहुंच सकते हैं।",
+          details: [
+            {  text: "Date: 14 फरवरी 2026" },
+            {  text: "Time: सुबह 10 बजे" },
+            {  text: "Location: वाराणसी, UP" },
+            {  text: "Target: 500+ लोग" },
+          ],
+          buttons: [
+            { text: " Donate Now", link: "donate.html", primary: true },
+            { text: " Contact Us", link: "contactus.html", primary: false },
+          ],
+        },
+        {
+          id: 2,
+          badge: "IMPORTANT NOTICE",
+          title: "नया Health Camp आयोजन",
+          image: "image/ph9.jpg", // Apni image path yahan daalein
+          description:
+            "निःशुल्क स्वास्थ्य जांच शिविर का आयोजन। सभी गरीब और जरूरतमंद लोगों के लिए मुफ्त चेकअप और दवाइयां।",
+          details: [
+            {  text: "Date: 20 फरवरी 2026" },
+            {  text: "Time: सुबह 9 बजे से शाम 5 बजे" },
+            {  text: "Location: इंदौर, MP" },
+            {  text: "Services: Free Checkup + Medicines" },
+          ],
+          buttons: [
+            { text: " Register Now", link: "contactus.html", primary: true },
+            { text: "  More Info", link: "health.html", primary: false },
+          ],
+        },
+        // Aur events add kar sakte ho yahan same format mein
+      ];
+
+      // ========================
+      // POPUP FUNCTIONALITY
+      // ========================
+      let currentEventIndex = 0;
+
+      function initEventPopup() {
+        // Check if there are any events
+        if (eventsData.length === 0) {
+          return; // No events, don't show popup
+        }
+
+        // Render all events
+        renderEvents();
+
+        // Show popup after 1.5 seconds
+        setTimeout(() => {
+          document.getElementById("eventOverlay").classList.add("active");
+        }, 1500);
+      }
+
+      function renderEvents() {
+        const slider = document.getElementById("eventsSlider");
+
+        if (eventsData.length === 0) {
+          slider.innerHTML =
+            '<p style="text-align: center; padding: 2rem;">कोई इवेंट नहीं है।</p>';
+          return;
+        }
+
+        let html = "";
+
+        eventsData.forEach((event, index) => {
+          const detailsHTML = event.details
+            .map(
+              (detail) => `
+        <div class="event-detail-item">
+          <span>${detail.text}</span>
+        </div>
+      `,
+            )
+            .join("");
+
+          const buttonsHTML = event.buttons
+            .map(
+              (btn) => `
+        <a href="${btn.link}" class="event-btn ${btn.primary ? "event-btn-primary" : "event-btn-secondary"}">
+          ${btn.text}
+        </a>
+      `,
+            )
+            .join("");
+
+          html += `
+        <div class="event-slide ${index === 0 ? "active" : ""}" data-index="${index}">
+          <div class="event-header">
+            <span class="event-badge">${event.badge}</span>
+            <h2 class="event-title">${event.title}</h2>
+          </div>
+          
+          <div class="event-content">
+            ${
+              event.image
+                ? `
+              <div class="event-image-wrapper">
+                <img src="${event.image}" alt="${event.title}" class="event-image">
+              </div>
+            `
+                : ""
+            }
+            
+            <div class="event-description">
+              ${event.description}
+            </div>
+            
+            <div class="event-details">
+              ${detailsHTML}
+            </div>
+            
+            <div class="event-buttons">
+              ${buttonsHTML}
+            </div>
+          </div>
+        </div>
+      `;
+        });
+
+        // Add navigation if multiple events
+        if (eventsData.length > 1) {
+          const indicatorsHTML = eventsData
+            .map(
+              (_, index) => `
+        <span class="event-indicator ${index === 0 ? "active" : ""}" onclick="goToEvent(${index})"></span>
+      `,
+            )
+            .join("");
+
+          html += `
+        <div class="event-navigation">
+          <button class="event-nav-btn" onclick="prevEvent()" id="prevBtn">◀</button>
+          <div class="event-indicators" id="eventIndicators">
+            ${indicatorsHTML}
+          </div>
+          <button class="event-nav-btn" onclick="nextEvent()" id="nextBtn">▶</button>
+        </div>
+      `;
+        }
+
+        slider.innerHTML = html;
+        updateNavigation();
+      }
+
+      function closeEventPopup() {
+        document.getElementById("eventOverlay").classList.remove("active");
+      }
+
+      function nextEvent() {
+        if (currentEventIndex < eventsData.length - 1) {
+          currentEventIndex++;
+          updateEventDisplay();
+        }
+      }
+
+      function prevEvent() {
+        if (currentEventIndex > 0) {
+          currentEventIndex--;
+          updateEventDisplay();
+        }
+      }
+
+      function goToEvent(index) {
+        currentEventIndex = index;
+        updateEventDisplay();
+      }
+
+      function updateEventDisplay() {
+        // Hide all slides
+        document.querySelectorAll(".event-slide").forEach((slide) => {
+          slide.classList.remove("active");
+        });
+
+        // Show current slide
+        document
+          .querySelector(`.event-slide[data-index="${currentEventIndex}"]`)
+          .classList.add("active");
+
+        // Update indicators
+        document
+          .querySelectorAll(".event-indicator")
+          .forEach((indicator, index) => {
+            indicator.classList.toggle("active", index === currentEventIndex);
+          });
+
+        updateNavigation();
+      }
+
+      function updateNavigation() {
+        const prevBtn = document.getElementById("prevBtn");
+        const nextBtn = document.getElementById("nextBtn");
+
+        if (prevBtn && nextBtn) {
+          prevBtn.disabled = currentEventIndex === 0;
+          nextBtn.disabled = currentEventIndex === eventsData.length - 1;
+        }
+      }
+
+      // Close popup on overlay click
+      document
+        .getElementById("eventOverlay")
+        ?.addEventListener("click", function (e) {
+          if (e.target === this) {
+            closeEventPopup();
+          }
+        });
+
+      // Close popup on Escape key
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") {
+          closeEventPopup();
+        }
+      });
+
+      // Initialize popup on page load
+      window.addEventListener("load", initEventPopup);
+    </script>
+  </body>
+</html>
